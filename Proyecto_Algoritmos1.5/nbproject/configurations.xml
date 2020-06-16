@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f4" displayName="Data" projectFiles="true">
+        <itemPath>AdministrativoData.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="Domain" projectFiles="true">
+        <itemPath>Administrativo.h</itemPath>
+        <itemPath>Usuario.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="GUI" projectFiles="true">
+        <itemPath>Drawing.h</itemPath>
+        <itemPath>Fondo.h</itemPath>
+        <itemPath>Fondo2.h</itemPath>
+        <itemPath>Fondo3.h</itemPath>
+        <itemPath>GrafoVuelosMainWIndows.h</itemPath>
+        <itemPath>IngresarAdministrativo.h</itemPath>
+        <itemPath>IngresarUsuario.h</itemPath>
+        <itemPath>VentanaPrincipal.h</itemPath>
+        <itemPath>VentanaViajes.h</itemPath>
+        <itemPath>VentanaViajesAdministrador.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="Logica" projectFiles="true">
+        <itemPath>Aerolineas.h</itemPath>
+        <itemPath>Destinos.h</itemPath>
+        <itemPath>Horarios.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Presentacion" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Util" projectFiles="true">
+        <logicalFolder name="f1" displayName="Cola" projectFiles="true">
+          <itemPath>ColaEnlazada.h</itemPath>
+          <itemPath>ColaNode.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f3" displayName="Grafo" projectFiles="true">
+          <itemPath>Arista.h</itemPath>
+          <itemPath>Grafo.h</itemPath>
+          <itemPath>Vertice.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f2" displayName="ListaEnlazada" projectFiles="true">
+          <itemPath>DoublyLinkedCircular.h</itemPath>
+          <itemPath>ListNode.h</itemPath>
+        </logicalFolder>
+        <itemPath>Util.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Logica" projectFiles="true">
+        <itemPath>Aerolineas.cpp</itemPath>
+        <itemPath>Destinos.cpp</itemPath>
+        <itemPath>Horarios.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Presentacion" projectFiles="true">
+      </logicalFolder>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>`pkg-config gtkmm-3.0 --cflags` -pthread</commandLine>
+        </ccTool>
+        <linkerTool>
+          <commandLine>`pkg-config gtkmm-3.0 --libs`</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Administrativo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AdministrativoData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Aerolineas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Aerolineas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Arista.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ColaEnlazada.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ColaNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Destinos.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Destinos.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DoublyLinkedCircular.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Drawing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Fondo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Fondo2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Fondo3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Horarios.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Horarios.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IngresarAdministrativo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IngresarUsuario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ListNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Usuario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaPrincipal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaViajes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaViajesAdministrador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Vertice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="Administrativo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AdministrativoData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Aerolineas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Aerolineas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Arista.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ColaEnlazada.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ColaNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Destinos.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Destinos.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DoublyLinkedCircular.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Drawing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Fondo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Fondo2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Fondo3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Horarios.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Horarios.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IngresarAdministrativo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IngresarUsuario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ListNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Usuario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaPrincipal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaViajes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaViajesAdministrador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Vertice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
