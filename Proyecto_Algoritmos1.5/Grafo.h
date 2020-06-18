@@ -1,88 +1,130 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* 
+ * File:   Grafo.h
+ * Author: sojo
+ *
+ * Created on 15 de junio de 2020, 03:05 PM
+ */
+
 #ifndef GRAFO_H
 #define GRAFO_H
 
+#include <cstdlib>
+#include <iostream>
 #include <vector>
 
-#include "Arista.h"
-#include "DoublyLinkedCircular.h"
-#include "Destinos.h"
+#include "Vertice.h"
 
-template <typename Destinos>
+using namespace std;
 
+template <typename Object>
 class Grafo {
-private:
-
-    DoublyLinkedCircular<Vertice<Destinos>*>* vertices;
-    DoublyLinkedCircular<Arista<Destinos>*>* aristas;
-    
-//    Vertice<Object>* verticeAux;
-//    Arista<Object>* aristaAux;
-
 public:
+    vector<Vertice<Object>> vertice;
+    int n;
+    int contador;
 
     Grafo() {
-        vertices = new DoublyLinkedCircular<Vertice<Destinos>*>();
-        aristas = new DoublyLinkedCircular<Arista<Destinos>*>();
-//        verticeAux = vertices->getFirstValue();
-//        aristaAux = aristas->getFirstValue();
-    }//constructor
+        this->contador = 0;
+        this->vertice;
+        // this->prueba();
 
-    void agregaVertice(Destinos elemento) {
-//        Vertice<Object> verticeAu(elemento);
-//        vertices->insert(verticeAux);
-        vertices->insert(elemento);
-    }//agregarVertice
+    }
 
-    bool existeVertice(Destinos v) {
-        for (int i = 0; i < vertices->size(); i++) {
-            if (v == vertices->siguiente()->value) {
-                return true;
+    bool existVertice(Object element) {
+        if (isEmpty()) {
+            cout << "El grafo no existe" << endl;
+        }
+        for (int i = 0; i < contador; i++) {
+            if (vertice[i] == element) {
+                return true; //se encuentra el elemento
             }
         }
         return false;
+    }
+    //
+    //    bool existArista(Object v1, Object v2) {
+    //        if (isEmpty()) {
+    //            cout << "El grafo no existe" << endl;
+    //        }
+    //        if (vertice[getPosicion(v1)].listaArista->exist(v2)) {
+    //            return true;
+    //        }
+    //        return false;
+    //    }
 
-    }//existeArista
-
-    void agregaAristayPeso(Destinos v1, Destinos v2, int peso) {
-
-        if (!existeVertice(v1) || !existeVertice(v2)) {
-            cout << ("alguno o ninguno de los vertices existe") << endl;
+    void agregarVertice(Object element) {
+        if (contador >= 1) {
+            cout << "El grafo alcanzo el limite" << endl;
         }
-//        Arista<Object> aristaAu(v1, v2, peso);
-//        aristas->insert(aristaAu);
-        aristas->insert(v1, v2, peso);
+        this->vertice[contador++] = new Vertice<Object*>(element);
+    }
 
-    } //agregaAristayPeso
+    void agregarArista(Object v1, Object v2) {
 
-//    void prueba() {
-//        
-//        Destinos* destino1;
-//        destino1 = new Destinos("Avianca", "Costa Rica", "Argentina");
-//        Destinos v1 = destino1;
-//        
-//        Destinos* destino2;
-//        destino2 = new Destinos("Avianca", "Holanda", "Japon");
-//        Destinos v2 = destino2;
-//
-//        agregaVertice(v1);
-//        agregaVertice(v2);
-//        agregaAristayPeso(v1, v2, 30);
-//
-//    }
+        //        if (!existVertice(v1) || !existVertice(v2)) {
+        //            cout << "Alguno o ninguno de los 2 vertices no existe" << endl;
+        //        }
+        vertice[getPosicion(v1)].listaArista->insert(v2);
+
+        //        vertices[getPosicion(v2)].listaPesos.insertar(v1);
+        vertice[getPosicion(v2)].listaArista->insert(v1);
+        //        vertices[getPosicion(v2)].listaPesos.insertar(v1);
+
+    }
+
+    void agregarPeso(Object v1, Object v2, Object peso) {
+
+        //        if (!existArista(v1, v2)) {
+        //            cout << "No existe una arista entre el vertice: " << v1 << " y el vertice 2" << v2 << endl;
+        //        }
+        vertice[getPosicion(v1)].listaPeso->insert(peso);
+
+        vertice[getPosicion(v2)].listaPeso->insert(peso);
+
+    }
+
+    int getPosicion(Object element) {
+        for (int i = 0; i < contador; i++) {
+            if (vertice[i].element == element) {
+                return i; //ubicacion del vertices
+            }
+        }
+        return -1; //no se encontro
+    }
+
+    bool isEmpty() {
+
+        return contador == 0;
+    }
+
+    void prueba() {
+        agregarVertice((Object) "A");
+        agregarVertice((Object) "B");
+
+        agregarArista((Object) "A", (Object) "B");
+
+    }
 
     void draw(const Cairo::RefPtr<Cairo::Context>& cr) {
-        for (int i = 0; i < vertices->size(); i++) {
-            vertices->siguiente()->value->draw(cr);
+        for (int i = 0; i < 5; i++) {
+            vertice[i].draw(cr);
         }
-
-        for (int i = 0; i < aristas->size(); i++) {
-            aristas->siguiente()->value->draw(cr);
-        }
-
         cr->fill();
     }
-    
+
+
+
+private:
+
 };
+
+
 
 #endif /* GRAFO_H */
 
