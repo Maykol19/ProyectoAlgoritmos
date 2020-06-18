@@ -1,28 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* 
+ * File:   Vertice.h
+ * Author: sojo
+ *
+ * Created on 15 de junio de 2020, 03:05 PM
+ */
+
 #ifndef VERTICE_H
 #define VERTICE_H
 
-#include <cairomm-1.0/cairomm/context.h>
+#include <cstdlib>
+#include <iostream>
 
-#include "Destinos.h"
+#include "DoublyLinkedCircular.h"
 
-template <typename Destinos>
+using namespace std;
+
+template <typename Object>
 class Vertice {
-private:
-    Destinos elemento; //elemento almacenado en el vertice
+public:
+    Object element; //elemento almacenado en el vertice
+    DoublyLinkedCircular<Object>*listaArista;
+    DoublyLinkedCircular<Object>*listaPeso;
     int x, y;
     Glib::RefPtr<Gdk::Pixbuf> image;
 
-public:
-
-    Vertice(Destinos elemento) {
-        this.elemento = elemento;
-        this->image = Gdk::Pixbuf::create_from_file("assets/aPapel.png");
-        this.x = 500;
-        this.y = 500;
-    }//constructor
+    Vertice(Object element) {
+        this->element = element;
+        listaArista = new DoublyLinkedCircular<Object>();
+        listaPeso = new DoublyLinkedCircular<Object>();
+    }
 
     Vertice(int x, int y) {
-        this.elemento = elemento;
+        this.element = element;
         this->image = Gdk::Pixbuf::create_from_file("assets/aPapel.png");
         this.x = x;
         this.y = y;
@@ -33,8 +48,10 @@ public:
         cr->rectangle(this->x, this->y, this->image->get_width(), this->image->get_height());
         cr->fill();
     }
-};
 
+private:
+
+};
 
 
 #endif /* VERTICE_H */

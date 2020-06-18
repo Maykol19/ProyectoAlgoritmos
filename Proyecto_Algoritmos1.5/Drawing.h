@@ -11,7 +11,7 @@ public:
 
     Drawing() {
         this->set_size_request(600, 600);
-        //grafo->prueba();
+        grafo = new Grafo<Object*>();
     }//constructor
 
     void updateDrawingArea() {
@@ -26,11 +26,9 @@ protected:
 
 
 private:
-    Grafo<Object>* grafo;
+    Grafo<Object*>* grafo;
 
 };
-
-
 
 #endif /* DRAWING_H */
 

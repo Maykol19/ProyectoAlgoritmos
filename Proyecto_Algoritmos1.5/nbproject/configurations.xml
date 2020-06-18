@@ -36,7 +36,6 @@
           <itemPath>ColaNode.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="Grafo" projectFiles="true">
-          <itemPath>Arista.h</itemPath>
           <itemPath>Grafo.h</itemPath>
           <itemPath>Vertice.h</itemPath>
         </logicalFolder>
@@ -98,8 +97,6 @@
       <item path="Aerolineas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Aerolineas.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Arista.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ColaEnlazada.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -175,8 +172,6 @@
       <item path="Aerolineas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Aerolineas.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Arista.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ColaEnlazada.h" ex="false" tool="3" flavor2="0">
       </item>
