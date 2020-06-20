@@ -11,12 +11,12 @@ public:
 
         listaA = new DoublyLinkedCircular<Aerolineas*>();
 
-        destino1 = new Destinos("Avianca", "Costa Rica", "Argentina");
-        destino2 = new Destinos("Avianca", "Costa Rica", "Chile");
-        destino3 = new Destinos("Latam", "Costa Rica", "Panama");
-        destino4 = new Destinos("Latam", "Espana", "Holanda");
-        destino5 = new Destinos("American", "Japon", "Afganistan");
-        destino6 = new Destinos("American", "Costa Rica", "USA");
+        destino1 = new Destinos("Avianca", "Costa Rica", "Argentina", " ");
+        destino2 = new Destinos("Avianca", "Costa Rica", "Chile", "China");
+        destino3 = new Destinos("Latam", "Costa Rica", "Panama", " ");
+        destino4 = new Destinos("Latam", "Espana", "Holanda", "Camerun");
+        destino5 = new Destinos("American", "Japon", "Afganistan", "USA");
+        destino6 = new Destinos("American", "Costa Rica", "USA", "Mexico");
 
         listaAvi = new DoublyLinkedCircular<Destinos*>();
         listaLat = new DoublyLinkedCircular<Destinos*>();
@@ -184,4 +184,3 @@ private:
 
 
 #endif /* UTIL_H */
-
