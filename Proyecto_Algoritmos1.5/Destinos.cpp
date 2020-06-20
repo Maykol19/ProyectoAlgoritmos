@@ -1,10 +1,10 @@
 #include "Destinos.h"
 
-Destinos::Destinos(string nombreAerolinea, string paisSalida, string paisLlegada) {
+Destinos::Destinos(string nombreAerolinea, string paisSalida, string paisLlegada, string restriccion) {
     this->nombreAerolinea = nombreAerolinea;
     this->paisLlegada=paisLlegada;
     this->paisSalida= paisSalida;
-    
+    this->restriccion = restriccion;
 }//constructor
 
 //getters and setters
@@ -34,6 +34,14 @@ string Destinos::GetNombreAerolinea() const {
 
 ColaEnlazada<Horarios*>* Destinos::GetHorarios() const {
     return horarios;
+}
+
+void Destinos::SetRestriccion(string restriccion) {
+    this->restriccion = restriccion;
+}
+
+string Destinos::GetRestriccion() const {
+    return restriccion;
 }
 
 string Destinos::toString(){

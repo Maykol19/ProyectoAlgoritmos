@@ -16,6 +16,7 @@
 #include "Viaje.h"
 #include "ViajeData.h"
 
+
 class VentanaViajes : public Gtk::Window {
 public:
 
@@ -206,7 +207,7 @@ private:
 
         m_Combo.pack_start(m_Columns.m_col_horarios);
         m_Combo.pack_start(m_cell);
-        m_Combo.signal_changed().connect( sigc::mem_fun(*this, &VentanaViajes::on_combo_changed) );
+        m_Combo.signal_changed().connect(sigc::mem_fun(*this, &VentanaViajes::on_combo_changed));
 
         this->fixedAerlonias.put(this->m_Combo, 250, 163);
 
@@ -228,16 +229,27 @@ private:
     void OnButtonClickedComprarTiquete() {
 
         if (aux != NULL && auxDest != NULL && auxHora != NULL) {
-            Viaje* viaje = new Viaje(aux, auxDest, auxHora);
-            viajeData->write(viaje);
-            Gtk::MessageDialog dialogo(
-                    *this,
-                    "Tiquete comprado con exito",
-                    false,
-                    Gtk::MESSAGE_INFO
-                    );
-            dialogo.set_secondary_text("Tiquete comprado con exito");
-            dialogo.run();
+            if (auxDest->GetRestriccion() != usuarioAux->getNacionalidad()) {
+                Viaje* viaje = new Viaje(aux, auxDest, auxHora);
+                viajeData->write(viaje);
+                Gtk::MessageDialog dialogo(
+                        *this,
+                        "Tiquete comprado con exito",
+                        false,
+                        Gtk::MESSAGE_INFO
+                        );
+                dialogo.set_secondary_text("Tiquete comprado con exito");
+                dialogo.run();
+            } else {
+                Gtk::MessageDialog dialogo(
+                        *this,
+                        "Error",
+                        false,
+                        Gtk::MESSAGE_INFO
+                        );
+                dialogo.set_secondary_text("Restricción por nacionalidad");
+                dialogo.run();
+            }
         } else {
             Gtk::MessageDialog dialogo(
                     *this,
@@ -251,24 +263,23 @@ private:
         }
 
     }
-    
-    void on_combo_changed() {
-            Gtk::TreeModel::iterator iter = m_Combo.get_active();
-            if (iter) {
-                Gtk::TreeModel::Row row = *iter;
-                if (row) {
-                    //Get the data for the selected row, using our knowledge of the tree
-                    //model:
-                    Glib::ustring horario = row[m_Columns.m_col_horarios];
-                    Glib::ustring hora = " ";
 
-                    auxHora = new Horarios(horario, hora);
-                }
-            } else
-                std::cout << "invalid iter" << std::endl;
-        }
+    void on_combo_changed() {
+        Gtk::TreeModel::iterator iter = m_Combo.get_active();
+        if (iter) {
+            Gtk::TreeModel::Row row = *iter;
+            if (row) {
+                //Get the data for the selected row, using our knowledge of the tree
+                //model:
+                Glib::ustring horario = row[m_Columns.m_col_horarios];
+                Glib::ustring hora = " ";
+
+                auxHora = new Horarios(horario, hora);
+            }
+        } else
+            std::cout << "invalid iter" << std::endl;
+    }
 
 };
 
 #endif /* VENTANAVIAJES_H */
-
