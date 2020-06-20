@@ -6,10 +6,15 @@
                    projectFiles="true">
       <logicalFolder name="f4" displayName="Data" projectFiles="true">
         <itemPath>AdministrativoData.h</itemPath>
+        <itemPath>ViajeData.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="Domain" projectFiles="true">
         <itemPath>Administrativo.h</itemPath>
+        <itemPath>Aerolineas.h</itemPath>
+        <itemPath>Destinos.h</itemPath>
+        <itemPath>Horarios.h</itemPath>
         <itemPath>Usuario.h</itemPath>
+        <itemPath>Viaje.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="GUI" projectFiles="true">
         <itemPath>Drawing.h</itemPath>
@@ -22,11 +27,6 @@
         <itemPath>VentanaPrincipal.h</itemPath>
         <itemPath>VentanaViajes.h</itemPath>
         <itemPath>VentanaViajesAdministrador.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f1" displayName="Logica" projectFiles="true">
-        <itemPath>Aerolineas.h</itemPath>
-        <itemPath>Destinos.h</itemPath>
-        <itemPath>Horarios.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Presentacion" projectFiles="true">
       </logicalFolder>
@@ -142,6 +142,10 @@
       </item>
       <item path="Vertice.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Viaje.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ViajeData.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -216,6 +220,10 @@
       <item path="VentanaViajesAdministrador.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Vertice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Viaje.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ViajeData.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

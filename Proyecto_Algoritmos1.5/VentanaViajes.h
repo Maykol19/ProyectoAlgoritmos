@@ -13,6 +13,8 @@
 #include "ColaEnlazada.h"
 #include "Usuario.h"
 #include "Util.h"
+#include "Viaje.h"
+#include "ViajeData.h"
 
 class VentanaViajes : public Gtk::Window {
 public:
@@ -34,6 +36,7 @@ public:
         this->fixedAerlonias.show_all();
         this->fixedAerlonias.put(this->fondo2, 0, 0);
         usuarioAux = usuario;
+        this->viajeData = new ViajeData();
         add_events(Gdk::KEY_PRESS_MASK);
         this->add(this->fixedAerlonias);
         init();
@@ -50,22 +53,22 @@ public:
 
         for (int i = 0; i < this->util->getListaA()->size(); i++) {
             if ("Avianca" == aux->GetNombre()) {
-                if (event->keyval == GDK_KEY_Up) {
+                if (event->keyval == GDK_KEY_Right) {
                     this->destino.set_label(this->util->getListaAvi()->siguiente()->value->toString());
-                } else if (event->keyval == GDK_KEY_Down) {
+                } else if (event->keyval == GDK_KEY_Left) {
                     this->destino.set_label(this->util->getListaAvi()->anterior()->value->toString());
                 }
             } else if ("Latam" == aux->GetNombre()) {
-                if (event->keyval == GDK_KEY_Up) {
+                if (event->keyval == GDK_KEY_Right) {
                     this->destino.set_label(this->util->getListaLat()->siguiente()->value->toString());
-                } else if (event->keyval == GDK_KEY_Down) {
+                } else if (event->keyval == GDK_KEY_Left) {
                     this->destino.set_label(this->util->getListaLat()->anterior()->value->toString());
                 }
             }
             if ("American" == aux->GetNombre()) {
-                if (event->keyval == GDK_KEY_Up) {
+                if (event->keyval == GDK_KEY_Right) {
                     this->destino.set_label(this->util->getListaAme()->siguiente()->value->toString());
-                } else if (event->keyval == GDK_KEY_Down) {
+                } else if (event->keyval == GDK_KEY_Left) {
                     this->destino.set_label(this->util->getListaAme()->anterior()->value->toString());
                 }
             }
@@ -84,14 +87,15 @@ private:
     Gtk::Button destino;
     Gtk::Button seleccionarHorarios;
     Gtk::Button horario;
+    Gtk::Button confirmar;
     Aerolineas* aux;
     Destinos* auxDest;
+    Horarios* auxHora;
     Fondo2 fondo2;
     Gtk::ComboBox comboBoxDstinos;
     Usuario* usuarioAux;
     Util* util;
-
-
+    ViajeData* viajeData;
     ModelColumns m_Columns;
 
     //Child widgets:
@@ -146,18 +150,17 @@ private:
         }
 
 
-        this->fixedAerlonias.~Fixed();
+        //this->fixedAerlonias.~Fixed();
 
-        this->fixedDestinos.put(this->fondo2, 0, 0);
+        this->fixedAerlonias.put(this->fondo2, 0, 0);
         this->seleccionarDestinos.set_label("Seleccionar Destinos");
         this->destino.set_label("Elegir Destino");
         this->seleccionarDestinos.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajes::OnButtonClickedSeleccionarDes));
-        this->fixedDestinos.put(this->seleccionarDestinos, 30, 40);
-        this->fixedDestinos.put(this->destino, 250, 43);
-
+        this->fixedAerlonias.put(this->seleccionarDestinos, 30, 100);
+        this->fixedAerlonias.put(this->destino, 250, 103);
 
         this->add(this->fixedAerlonias);
-        this->add(this->fixedDestinos);
+        //this->add(this->fixedAerlonias);
         this->show_all_children();
 
     }//onButtonClickedCambiar
@@ -173,16 +176,14 @@ private:
             }
         }
 
-        this->fixedDestinos.~Fixed();
+        //this->fixedDestinos.~Fixed();
 
-        this->fixedHorarios.put(this->fondo2, 0, 0);
+        this->fixedAerlonias.put(this->fondo2, 0, 0);
         this->seleccionarHorarios.set_label("Seleccionar Horarios");
-        this->horario.set_label("Elegir Hora");
+        //this->horario.set_label("Elegir Hora");
         this->seleccionarHorarios.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajes::OnButtonClickedSeleccionarHor));
-        this->fixedHorarios.put(this->seleccionarHorarios, 30, 40);
-        this->fixedHorarios.put(this->horario, 250, 43);
-
-
+        this->fixedAerlonias.put(this->seleccionarHorarios, 30, 160);
+        //this->fixedAerlonias.put(this->horario, 250, 163);
 
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         m_Combo.set_model(m_refTreeModel);
@@ -200,30 +201,72 @@ private:
 
                 row = *(m_refTreeModel->append());
                 row[m_Columns.m_col_horarios] = auxDest->GetHorarios()->getNodo(j)->toString();
-
-
             }
-
         }
-
 
         m_Combo.pack_start(m_Columns.m_col_horarios);
         m_Combo.pack_start(m_cell);
+        m_Combo.signal_changed().connect( sigc::mem_fun(*this, &VentanaViajes::on_combo_changed) );
 
-        this->fixedHorarios.put(this->m_Combo, 250, 100);
+        this->fixedAerlonias.put(this->m_Combo, 250, 163);
 
-        this->add(this->fixedDestinos);
-        this->add(this->fixedHorarios);
+        this->add(this->fixedAerlonias);
         this->show_all_children();
 
-    } //OnButtonClickedSeleccionarDes
+    }//OnButtonClickedSeleccionarDes
 
     void OnButtonClickedSeleccionarHor() {
 
-
+        this->confirmar.set_label("Comprar tiquete");
+        this->confirmar.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajes::OnButtonClickedComprarTiquete));
+        this->fixedAerlonias.put(this->confirmar, 400, 300);
+        this->add(this->fixedAerlonias);
+        this->show_all_children();
 
     }
 
+    void OnButtonClickedComprarTiquete() {
+
+        if (aux != NULL && auxDest != NULL && auxHora != NULL) {
+            Viaje* viaje = new Viaje(aux, auxDest, auxHora);
+            viajeData->write(viaje);
+            Gtk::MessageDialog dialogo(
+                    *this,
+                    "Tiquete comprado con exito",
+                    false,
+                    Gtk::MESSAGE_INFO
+                    );
+            dialogo.set_secondary_text("Tiquete comprado con exito");
+            dialogo.run();
+        } else {
+            Gtk::MessageDialog dialogo(
+                    *this,
+                    "Error",
+                    false,
+                    Gtk::MESSAGE_INFO
+                    );
+            dialogo.set_secondary_text("Error, no puede viajar");
+            dialogo.run();
+
+        }
+
+    }
+    
+    void on_combo_changed() {
+            Gtk::TreeModel::iterator iter = m_Combo.get_active();
+            if (iter) {
+                Gtk::TreeModel::Row row = *iter;
+                if (row) {
+                    //Get the data for the selected row, using our knowledge of the tree
+                    //model:
+                    Glib::ustring horario = row[m_Columns.m_col_horarios];
+                    Glib::ustring hora = " ";
+
+                    auxHora = new Horarios(horario, hora);
+                }
+            } else
+                std::cout << "invalid iter" << std::endl;
+        }
 
 };
 
