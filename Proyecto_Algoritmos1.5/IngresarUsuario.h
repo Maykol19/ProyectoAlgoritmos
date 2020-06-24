@@ -1,8 +1,10 @@
 #ifndef INGRESARUSUARIO_H
 #define INGRESARUSUARIO_H
+
 #include <gtkmm.h>
 #include "Fondo.h"
 #include "VentanaViajes.h"
+#include "VuelosUsuario.h"
 
 class IngresarUsuario : public Gtk::Window {
 public:
@@ -31,6 +33,7 @@ public:
 protected:
     //variables
     Gtk::Fixed fixed;
+    Gtk::Fixed fixed2;
     Gtk::Label lblNombre;
     Gtk::Label lblGenero;
     Gtk::Label lblEdad;
@@ -42,9 +45,11 @@ protected:
     Gtk::Entry etNumPas;
     Gtk::Entry etNacio;
     Gtk::Button btnGuardar;
+    Gtk::Button btnVuelos;
     Gtk::Button btnSalir;
     Fondo drawingGame;
     Usuario* usuarioAux;
+    VuelosUsuario* vuelosUsuario;
 
 
     //string nombre, string genero, int edad, string numPasaporte, string nacionalidad
@@ -76,11 +81,15 @@ private:
         this->btnGuardar.set_label("Ingresar");
         this->fixed.put(this->btnGuardar, 20, 380);
 
+        this->btnVuelos.set_label("Vuelos");
+        this->fixed.put(this->btnVuelos, 150, 380);
+        
         this->btnSalir.set_label("Salir");
-        this->fixed.put(this->btnSalir, 200, 380);
+        this->fixed.put(this->btnSalir, 280, 380);
 
 
         this->btnGuardar.signal_clicked().connect(sigc::mem_fun(*this, &IngresarUsuario::onButtonClicked));
+        this->btnVuelos.signal_clicked().connect(sigc::mem_fun(*this, &IngresarUsuario::onButtonClicked3));
         this->btnSalir.signal_clicked().connect(sigc::mem_fun(*this, &IngresarUsuario::onButtonClicked2));
 
         ventanaViajes = 0;
@@ -104,17 +113,23 @@ private:
 
     void aboutWinClose() {
         this->ventanaViajes = 0;
+        this->vuelosUsuario = 0;
     }//aboutWinClose
 
     void onButtonClicked2() {
         this->close();
     }
-
+    
+    void onButtonClicked3() {
+        if (this->vuelosUsuario != 0)
+            return;
+        this->vuelosUsuario = new VuelosUsuario();
+        this->vuelosUsuario->signal_hide().connect(sigc::mem_fun(this, &IngresarUsuario::aboutWinClose));
+        this->vuelosUsuario->show();
+    }
 
     VentanaViajes* ventanaViajes;
     static IngresarUsuario* instance; // atributo
-
-
 
 };
 
