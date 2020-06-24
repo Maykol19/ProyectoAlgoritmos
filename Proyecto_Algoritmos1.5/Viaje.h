@@ -1,55 +1,74 @@
 #ifndef VIAJE_H
 #define VIAJE_H
 
+#include <ostream>
 #include <iostream>
-#include <fstream>
-#include <iostream>
-#include <cstdlib>
-#include <cstring>
-#include "string.h"
-#include "Aerolineas.h"
 #include <string>
+#include <sstream>
+
+#include "Aerolineas.h"
+
 
 using namespace std;
 
 class Viaje {
-    
 public:
-    Viaje(Aerolineas* aerolinea, Destinos* destino, Horarios* horario) {
-        this->aerolina = aerolinea;
-        this->destino = destino;
-        this->horario = horario;
+
+    Viaje() {
+        strcpy(this->nombreAe, "NULL");
+        strcpy(this->destSalida, "NULL");
+        strcpy(this->desLlegada, "NULL");
+        strcpy(this->horaSalida, "NULL");
+        strcpy(this->horaLlegada, "NULL");
+
     }
 
-    void SetHorario(Horarios* horario) {
-        this->horario = horario;
+    Viaje(char* nombreAero, char* destSalida, char* destLlegada, char* horaSalida, char* horaLlegada) {
+        strcpy(this->nombreAe, nombreAero);
+        strcpy(this->destSalida, destSalida);
+        strcpy(this->desLlegada, destLlegada);
+        strcpy(this->horaSalida, horaSalida);
+        strcpy(this->horaLlegada, horaLlegada);
+
     }
 
-    Horarios* GetHorario() const {
-        return horario;
+    char* GetHoraLlegada() {
+        return horaLlegada;
     }
 
-    void SetDestino(Destinos* destino) {
-        this->destino = destino;
+    char* GetHoraSalida() {
+        return horaSalida;
     }
 
-    Destinos* GetDestino() const {
-        return destino;
+    char* GetDesLlegada() {
+        return desLlegada;
     }
 
-    void SetAerolina(Aerolineas* aerolina) {
-        this->aerolina = aerolina;
+    char* GetDestSalida() {
+        return destSalida;
     }
 
-    Aerolineas* GetAerolina() const {
-        return aerolina;
-    }//constructor
-    
+    char* GetNombreAe() {
+        return nombreAe;
+    }
+
+    string toString() {
+
+        stringstream s;
+        s << nombreAe << "    "<< destSalida << " " << desLlegada << "    "<< horaSalida << " " << horaLlegada;
+        return s.str();
+
+    }
+
+
 private:
-    //Variables
-    Aerolineas* aerolina;
-    Destinos* destino;
-    Horarios* horario;
+    //VariableS
+    char nombreAe[30];
+    char destSalida[30];
+    char desLlegada[30];
+    char horaSalida[30];
+    char horaLlegada[30];
+
 
 };
 

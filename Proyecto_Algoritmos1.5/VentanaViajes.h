@@ -14,8 +14,8 @@
 #include "Usuario.h"
 #include "Util.h"
 #include "Viaje.h"
-#include "ViajeData.h"
-
+//#include "ViajeData.h"
+#include "ViajeDataRAF.h"
 
 class VentanaViajes : public Gtk::Window {
 public:
@@ -37,7 +37,6 @@ public:
         this->fixedAerlonias.show_all();
         this->fixedAerlonias.put(this->fondo2, 0, 0);
         usuarioAux = usuario;
-        this->viajeData = new ViajeData();
         add_events(Gdk::KEY_PRESS_MASK);
         this->add(this->fixedAerlonias);
         init();
@@ -96,7 +95,6 @@ private:
     Gtk::ComboBox comboBoxDstinos;
     Usuario* usuarioAux;
     Util* util;
-    ViajeData* viajeData;
     ModelColumns m_Columns;
 
     //Child widgets:
@@ -114,12 +112,7 @@ private:
 
         this->util->llenar();
 
-
         aux = this->util->getListaA()->getFirstValue();
-
-
-
-
 
         for (int i = 0; i < this->util->getListaA()->size(); i++) {
             if ("Avianca" == aux->GetNombre()) {
@@ -230,8 +223,23 @@ private:
 
         if (aux != NULL && auxDest != NULL && auxHora != NULL) {
             if (auxDest->GetRestriccion() != usuarioAux->getNacionalidad()) {
-                Viaje* viaje = new Viaje(aux, auxDest, auxHora);
-                viajeData->write(viaje);
+
+                char nombreA[30];
+                char destinoSalida[30];
+                char destinoLlegada[30];
+                char horaSalida[30];
+                char horaLlegada[30];
+
+                strcpy(nombreA, (char*) aux->GetNombre().c_str());
+                strcpy(destinoSalida, (char*) auxDest->GetPaisSalida().c_str());
+                strcpy(destinoLlegada, (char*) auxDest->GetPaisLlegada().c_str());
+                strcpy(horaSalida, (char*) auxHora->GetSalida().c_str());
+                strcpy(horaLlegada, (char*) auxHora->GetLlegada().c_str());
+
+
+                Viaje viaje(nombreA, destinoSalida, destinoLlegada, horaSalida, horaLlegada);
+                ViajeDataRAF viajeData;
+                viajeData.registrarViaje(viaje);
                 Gtk::MessageDialog dialogo(
                         *this,
                         "Tiquete comprado con exito",
@@ -283,3 +291,4 @@ private:
 };
 
 #endif /* VENTANAVIAJES_H */
+
