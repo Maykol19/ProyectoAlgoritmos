@@ -21,6 +21,7 @@
         <itemPath>Fondo.h</itemPath>
         <itemPath>Fondo2.h</itemPath>
         <itemPath>Fondo3.h</itemPath>
+        <itemPath>GrafoVuelos.h</itemPath>
         <itemPath>GrafoVuelosMainWIndows.h</itemPath>
         <itemPath>IngresarAdministrativo.h</itemPath>
         <itemPath>IngresarUsuario.h</itemPath>
@@ -119,6 +120,8 @@
       </item>
       <item path="Grafo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="GrafoVuelos.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Horarios.cpp" ex="false" tool="1" flavor2="0">
@@ -199,6 +202,8 @@
       <item path="Fondo3.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Grafo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GrafoVuelos.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
       </item>

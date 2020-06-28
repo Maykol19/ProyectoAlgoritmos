@@ -13,6 +13,7 @@
 #include "ColaEnlazada.h"
 #include "Fondo3.h"
 #include "GrafoVuelosMainWIndows.h"
+#include "GrafoVuelos.h"
 
 class VentanaViajesAdministrador : public Gtk::Window {
 public:
@@ -36,25 +37,24 @@ public:
         this->fixedPrincipal.put(this->agregaViajes, 20, 10);
         this->fixedPrincipal.put(this->vuelos, 20, 50);
 
-        this->grafoVuelos = 0;
+        this->gV = 0;
         this->vuelos.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajesAdministrador::onButtonClickedVuelos));
-
 
     }//init
 
     void onButtonClickedVuelos() {
 
-        if (this->grafoVuelos != 0)
+        if (this->gV != 0)
             return;
-        this->grafoVuelos = new GrafoVuelosMainWindows();
-        this->grafoVuelos->signal_hide().connect(sigc::mem_fun(this, &VentanaViajesAdministrador::aboutWinClose));
-        this->grafoVuelos->show();
+        this->gV = new GrafoVuelos();
+        this->gV->signal_hide().connect(sigc::mem_fun(this, &VentanaViajesAdministrador::aboutWinClose));
+        this->gV->show();
 
         this->close();
     }
 
     void aboutWinClose() {
-        this->grafoVuelos = 0;
+        this->gV = 0;
     }//aboutWinClose
 
     void onButtonClickedAgregar() {
@@ -96,9 +96,7 @@ private:
     Gtk::Entry eDestinos2;
     Gtk::Entry eHorarios2;
     GrafoVuelosMainWindows* grafoVuelos;
-    //    Gtk::Label lAerolineas;
-    //    Gtk::Label lDestinos;
-    //    Gtk::Label lHorarios;
+    GrafoVuelos* gV;
     Fondo3 fondo3;
 
 };
