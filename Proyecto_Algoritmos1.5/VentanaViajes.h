@@ -14,7 +14,6 @@
 #include "Usuario.h"
 #include "Util.h"
 #include "Viaje.h"
-//#include "ViajeData.h"
 #include "ViajeDataRAF.h"
 
 class VentanaViajes : public Gtk::Window {
@@ -26,7 +25,6 @@ public:
         ModelColumns() {
             add(m_col_horarios);
         }
-
         Gtk::TreeModelColumn<Glib::ustring> m_col_horarios;
     };
 
@@ -229,15 +227,16 @@ private:
                 char destinoLlegada[30];
                 char horaSalida[30];
                 char horaLlegada[30];
+                char avion[30];
 
                 strcpy(nombreA, (char*) aux->GetNombre().c_str());
                 strcpy(destinoSalida, (char*) auxDest->GetPaisSalida().c_str());
                 strcpy(destinoLlegada, (char*) auxDest->GetPaisLlegada().c_str());
                 strcpy(horaSalida, (char*) auxHora->GetSalida().c_str());
                 strcpy(horaLlegada, (char*) auxHora->GetLlegada().c_str());
+                strcpy(avion, (char*) auxDest->GetAvion().c_str());
 
-
-                Viaje viaje(nombreA, destinoSalida, destinoLlegada, horaSalida, horaLlegada);
+                Viaje viaje(nombreA, destinoSalida, destinoLlegada, horaSalida, horaLlegada, avion);
                 ViajeDataRAF viajeData;
                 viajeData.registrarViaje(viaje);
                 Gtk::MessageDialog dialogo(

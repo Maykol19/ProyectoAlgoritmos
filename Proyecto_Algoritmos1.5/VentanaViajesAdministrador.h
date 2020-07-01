@@ -14,6 +14,7 @@
 #include "Fondo3.h"
 #include "GrafoVuelosMainWIndows.h"
 #include "GrafoVuelos.h"
+#include "Historial.h"
 
 class VentanaViajesAdministrador : public Gtk::Window {
 public:
@@ -32,12 +33,15 @@ public:
 
         this->agregaViajes.set_label("Agregar");
         this->vuelos.set_label("Vuelos");
+        this->bhistorial.set_label("Historial");
         this->agregaViajes.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajesAdministrador::onButtonClickedAgregar));
-        //this->seleccionarAerolinea.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajes::onButtonClickedSeleccionarAero));
+        this->bhistorial.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajesAdministrador::onButtonClickedHistorial));
         this->fixedPrincipal.put(this->agregaViajes, 20, 10);
-        this->fixedPrincipal.put(this->vuelos, 20, 50);
+        this->fixedPrincipal.put(this->vuelos, 20, 55);
+        this->fixedPrincipal.put(this->bhistorial, 20, 100);
 
         this->gV = 0;
+        this->historial = 0;
         this->vuelos.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajesAdministrador::onButtonClickedVuelos));
 
     }//init
@@ -51,10 +55,12 @@ public:
         this->gV->show();
 
         this->close();
+        
     }
 
     void aboutWinClose() {
         this->gV = 0;
+        this->historial = 0;
     }//aboutWinClose
 
     void onButtonClickedAgregar() {
@@ -79,6 +85,18 @@ public:
         this->show_all_children();
 
     }//onButtonClickedAgregar
+    
+    void onButtonClickedHistorial() {
+        
+        if (this->historial != 0)
+            return;
+        this->historial = new Historial();
+        this->historial->signal_hide().connect(sigc::mem_fun(this, &VentanaViajesAdministrador::aboutWinClose));
+        this->historial->show();
+
+        this->close();
+        
+    }
 
 private:
     //atributo
@@ -90,6 +108,7 @@ private:
     Gtk::Button bAerolineas;
     Gtk::Button bDestino;
     Gtk::Button bHorarios;
+    Gtk::Button bhistorial;
     Gtk::Entry eAerolineas;
     Gtk::Entry eDestinos;
     Gtk::Entry eHorarios;
@@ -97,6 +116,7 @@ private:
     Gtk::Entry eHorarios2;
     GrafoVuelosMainWindows* grafoVuelos;
     GrafoVuelos* gV;
+    Historial* historial;
     Fondo3 fondo3;
 
 };

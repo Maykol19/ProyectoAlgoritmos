@@ -1,10 +1,11 @@
 #include "Destinos.h"
 
-Destinos::Destinos(string nombreAerolinea, string paisSalida, string paisLlegada, string restriccion) {
+Destinos::Destinos(string nombreAerolinea, string paisSalida, string paisLlegada, string restriccion, string avion) {
     this->nombreAerolinea = nombreAerolinea;
     this->paisLlegada=paisLlegada;
     this->paisSalida= paisSalida;
     this->restriccion = restriccion;
+    this->avion = avion;
 }//constructor
 
 //getters and setters
@@ -42,6 +43,14 @@ void Destinos::SetRestriccion(string restriccion) {
 
 string Destinos::GetRestriccion() const {
     return restriccion;
+}
+
+void Destinos::SetAvion(string avion) {
+    this->avion = avion;
+}
+
+string Destinos::GetAvion() const {
+    return avion;
 }
 
 string Destinos::toString(){

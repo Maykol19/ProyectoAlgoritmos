@@ -15,12 +15,15 @@ class Destinos {
     string nombreAerolinea;
     ColaEnlazada<Horarios*>* horarios;
     string restriccion;
+    string avion;
     
 public:
-    Destinos(string nombreAerolinea, string paisSalida, string paisLlegada, string restriccion);
+    Destinos(string nombreAerolinea, string paisSalida, string paisLlegada, string restriccion, string avion);
     void SetHorarios(ColaEnlazada<Horarios*>* horarios);
     ColaEnlazada<Horarios*>* GetHorarios() const;
     void SetPaisSalida(string paisSalida);
+    void SetAvion(string avion);
+    string GetAvion() const;
     string GetPaisSalida() const;
     void SetRestriccion(string restriccion);
     string GetRestriccion() const;
