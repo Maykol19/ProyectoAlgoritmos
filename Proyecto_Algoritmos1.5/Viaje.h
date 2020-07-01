@@ -5,9 +5,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-
 #include "Aerolineas.h"
-
 
 using namespace std;
 
@@ -20,16 +18,17 @@ public:
         strcpy(this->desLlegada, "NULL");
         strcpy(this->horaSalida, "NULL");
         strcpy(this->horaLlegada, "NULL");
+        strcpy(this->avion, "NULL");
 
     }
 
-    Viaje(char* nombreAero, char* destSalida, char* destLlegada, char* horaSalida, char* horaLlegada) {
+    Viaje(char* nombreAero, char* destSalida, char* destLlegada, char* horaSalida, char* horaLlegada, char* avion) {
         strcpy(this->nombreAe, nombreAero);
         strcpy(this->destSalida, destSalida);
         strcpy(this->desLlegada, destLlegada);
         strcpy(this->horaSalida, horaSalida);
         strcpy(this->horaLlegada, horaLlegada);
-
+        strcpy(this->avion, avion);
     }
 
     char* GetHoraLlegada() {
@@ -51,11 +50,15 @@ public:
     char* GetNombreAe() {
         return nombreAe;
     }
+    
+    char* GetAvion() {
+        return avion;
+    }
 
     string toString() {
 
         stringstream s;
-        s << nombreAe << "    "<< destSalida << " " << desLlegada << "    "<< horaSalida << " " << horaLlegada;
+        s << nombreAe << "                 "<< destSalida << "-" << desLlegada << "              "<< horaSalida << "              " << avion;
         return s.str();
 
     }
@@ -68,6 +71,7 @@ private:
     char desLlegada[30];
     char horaSalida[30];
     char horaLlegada[30];
+    char avion[30];
 
 
 };

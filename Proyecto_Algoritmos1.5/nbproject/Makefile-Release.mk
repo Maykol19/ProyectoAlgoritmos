@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Aerolineas.o \
+	${OBJECTDIR}/Avion.o \
 	${OBJECTDIR}/Destinos.o \
 	${OBJECTDIR}/Horarios.o \
 	${OBJECTDIR}/main.o
@@ -69,6 +70,11 @@ ${OBJECTDIR}/Aerolineas.o: Aerolineas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Aerolineas.o Aerolineas.cpp
+
+${OBJECTDIR}/Avion.o: Avion.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Avion.o Avion.cpp
 
 ${OBJECTDIR}/Destinos.o: Destinos.cpp
 	${MKDIR} -p ${OBJECTDIR}

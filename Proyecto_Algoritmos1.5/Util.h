@@ -1,9 +1,18 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include "Avion.h"
+#include "ArbolBinarioBusqueda.h"
+
+
 class Util {
 public:
 
+    //Cosas por hacer:
+    //Grafos con avión ?
+    //Historial de vuelos con árboles
+    //Administrador: Ingresar datos nuevos(Aerolineas, Destinos y Horarios)
+    
     Util() {
         aerolinea1 = new Aerolineas("Avianca");
         aerolinea2 = new Aerolineas("Latam");
@@ -11,35 +20,40 @@ public:
 
         listaA = new DoublyLinkedCircular<Aerolineas*>();
 
-        destino1 = new Destinos("Avianca", "Costa Rica", "Argentina", " ");
-        destino2 = new Destinos("Avianca", "Costa Rica", "Chile", "China");
-        destino3 = new Destinos("Latam", "Costa Rica", "Panama", " ");
-        destino4 = new Destinos("Latam", "Espana", "Holanda", "Camerun");
-        destino5 = new Destinos("American", "Japon", "Afganistan", "USA");
-        destino6 = new Destinos("American", "Costa Rica", "USA", "Mexico");
+        destino1 = new Destinos("Avianca", "Costa Rica", "Argentina", " ", "El Skipper");
+        destino2 = new Destinos("Avianca", "Costa Rica", "Chile", "China", "Airbus100");
+        destino3 = new Destinos("Latam", "Costa Rica", "Panama", " ", "JL608");
+        destino4 = new Destinos("Latam", "Espana", "Holanda", "Camerun", "El Batman DC");
+        destino5 = new Destinos("American", "Japon", "Afganistan", "USA", "Perla Negra-6");
+        destino6 = new Destinos("American", "Costa Rica", "USA", "Mexico", "Airbus A-319");
 
         listaAvi = new DoublyLinkedCircular<Destinos*>();
         listaLat = new DoublyLinkedCircular<Destinos*>();
         listaAme = new DoublyLinkedCircular<Destinos*>();
 
         //CR-AR
-        CR_AR1 = new Horarios("1:00", "2:00");
-        CR_AR2 = new Horarios("4:00", "6:00");
+        CR_AR1 = new Horarios("1:00", "8:00");
+        CR_AR2 = new Horarios("4:00", "11:00");
+        
         //CR--CH
-        CR_Ch1 = new Horarios("13:00", "18:00");
-        CR_Ch2 = new Horarios("9:00", "10:00");
+        CR_Ch1 = new Horarios("9:00", "10:25");
+        CR_Ch2 = new Horarios("13:00", "14:25");
+        
         //CR--PA
         CR_PA1 = new Horarios("10:00", "19:00");
         CR_PA2 = new Horarios("7:00", "10:00");
+        
         //ESP-HO
-        ESP_HO1 = new Horarios("1:00", "8:00");
-        ESP_HO2 = new Horarios("4:00", "9:00");
+        ESP_HO1 = new Horarios("7:00", "9:25");
+        ESP_HO2 = new Horarios("11:00", "13:50");
+        
         //JA--AF
-        JA_AF1 = new Horarios("6:00", "8:00");
-        JA_AF2 = new Horarios("17", "20:00");
+        JA_AF1 = new Horarios("11:00", "18:50");
+        JA_AF2 = new Horarios("17:00", "24:50");
+        
         //CR--USA
-        CR_USA1 = new Horarios("13:00", "19:00");
-        CR_USA2 = new Horarios("7:00", "16:00");
+        CR_USA1 = new Horarios("15:00", "21:30");
+        CR_USA2 = new Horarios("19:00", "1:30");
 
         cola1Avi = new ColaEnlazada<Horarios*>();
         cola2Avi = new ColaEnlazada<Horarios*>();
@@ -47,7 +61,17 @@ public:
         cola2Lat = new ColaEnlazada<Horarios*>();
         cola1Ame = new ColaEnlazada<Horarios*>();
         cola2Ame = new ColaEnlazada<Horarios*>();
-
+        
+        avionAvi1 = new Avion("El Skipper");
+        avionAvi2 = new Avion("Airbus100");
+        avionLat1 = new Avion("JL608");
+        avionLat2 = new Avion("El Batman DC");
+        avionAmer1 = new Avion("Perla Negra-6");
+        avionAmer2 = new Avion("Airbus A-319");
+        
+        arbolAvianca = new ArbolBinarioBusqueda<Avion*>();
+        arbolLatam = new ArbolBinarioBusqueda<Avion*>();
+        arbolAmerican = new ArbolBinarioBusqueda<Avion*>();
 
     }
 
@@ -85,6 +109,15 @@ public:
         destino4->SetHorarios(cola2Lat);
         destino5->SetHorarios(cola1Ame);
         destino6->SetHorarios(cola2Ame);
+        
+        arbolAvianca->insertar(avionAvi1);
+        arbolAvianca->insertar(avionAvi2);
+        
+        arbolLatam->insertar(avionLat1);
+        arbolLatam->insertar(avionLat2);
+        
+        arbolAmerican->insertar(avionAmer1);
+        arbolAmerican->insertar(avionAmer2);
 
     }
 
@@ -127,12 +160,19 @@ public:
     DoublyLinkedCircular<Aerolineas*>* getListaA() const {
         return listaA;
     }
-    
-    
-    
-    
 
+    ArbolBinarioBusqueda<Avion*>* getArbolAmerican() const {
+        return arbolAmerican;
+    }
 
+    ArbolBinarioBusqueda<Avion*>* getArbolLatam() const {
+        return arbolLatam;
+    }
+
+    ArbolBinarioBusqueda<Avion*>* getArbolAvianca() const {
+        return arbolAvianca;
+    }
+    
 private:
 
     Aerolineas* aerolinea1;
@@ -177,10 +217,21 @@ private:
     ColaEnlazada<Horarios*>* cola2Lat;
     ColaEnlazada<Horarios*>* cola1Ame;
     ColaEnlazada<Horarios*>* cola2Ame;
-
-
+    
+    Avion* avionAvi1;
+    Avion* avionAvi2;
+    Avion* avionLat1;
+    Avion* avionLat2;
+    Avion* avionAmer1;
+    Avion* avionAmer2;
+    
+    ArbolBinarioBusqueda<Avion*>* arbolAvianca;
+    ArbolBinarioBusqueda<Avion*>* arbolLatam;
+    ArbolBinarioBusqueda<Avion*>* arbolAmerican;
+    
 };
 
 
 
 #endif /* UTIL_H */
+

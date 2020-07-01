@@ -11,6 +11,7 @@
       <logicalFolder name="f5" displayName="Domain" projectFiles="true">
         <itemPath>Administrativo.h</itemPath>
         <itemPath>Aerolineas.h</itemPath>
+        <itemPath>Avion.h</itemPath>
         <itemPath>Destinos.h</itemPath>
         <itemPath>Horarios.h</itemPath>
         <itemPath>Usuario.h</itemPath>
@@ -23,6 +24,7 @@
         <itemPath>Fondo3.h</itemPath>
         <itemPath>GrafoVuelos.h</itemPath>
         <itemPath>GrafoVuelosMainWIndows.h</itemPath>
+        <itemPath>Historial.h</itemPath>
         <itemPath>IngresarAdministrativo.h</itemPath>
         <itemPath>IngresarUsuario.h</itemPath>
         <itemPath>VentanaPrincipal.h</itemPath>
@@ -33,6 +35,10 @@
       <logicalFolder name="f2" displayName="Presentacion" projectFiles="true">
       </logicalFolder>
       <logicalFolder name="f2" displayName="Util" projectFiles="true">
+        <logicalFolder name="f1" displayName="ArbolBusquedaBinaria" projectFiles="true">
+          <itemPath>ArbolBinarioBusqueda.h</itemPath>
+          <itemPath>NodoBinario.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="f1" displayName="Cola" projectFiles="true">
           <itemPath>ColaEnlazada.h</itemPath>
           <itemPath>ColaNode.h</itemPath>
@@ -57,6 +63,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Logica" projectFiles="true">
         <itemPath>Aerolineas.cpp</itemPath>
+        <itemPath>Avion.cpp</itemPath>
         <itemPath>Destinos.cpp</itemPath>
         <itemPath>Horarios.cpp</itemPath>
       </logicalFolder>
@@ -100,6 +107,12 @@
       </item>
       <item path="Aerolineas.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ArbolBinarioBusqueda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Avion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Avion.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ColaEnlazada.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ColaNode.h" ex="false" tool="3" flavor2="0">
@@ -124,6 +137,8 @@
       </item>
       <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Historial.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Horarios.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Horarios.h" ex="false" tool="3" flavor2="0">
@@ -133,6 +148,8 @@
       <item path="IngresarUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ListNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NodoBinario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -183,6 +200,12 @@
       </item>
       <item path="Aerolineas.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ArbolBinarioBusqueda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Avion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Avion.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ColaEnlazada.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ColaNode.h" ex="false" tool="3" flavor2="0">
@@ -207,6 +230,8 @@
       </item>
       <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Historial.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Horarios.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Horarios.h" ex="false" tool="3" flavor2="0">
@@ -216,6 +241,8 @@
       <item path="IngresarUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ListNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NodoBinario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.h" ex="false" tool="3" flavor2="0">
       </item>
