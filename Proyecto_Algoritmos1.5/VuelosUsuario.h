@@ -4,6 +4,7 @@
 #include <gtkmm.h>
 #include "VuelosUsuario.h"
 #include "ViajeDataRAF.h"
+#include "Fondo2.h"
 
 #include <iostream>
 #include <string>
@@ -16,6 +17,7 @@ public:
     VuelosUsuario() {
         this->set_title("Vuelos");
         this->set_size_request(600, 600);
+        this->fixed.put(this->fondo, 0, 0);
         init();
     }//constructor
 
@@ -76,6 +78,7 @@ private:
     Gtk::Button bHorarios;
     Gtk::Button bVuelos;
     Gtk::Button bAvion;
+    Fondo2 fondo;
 
 };
 

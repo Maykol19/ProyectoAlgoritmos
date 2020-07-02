@@ -1,3 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* 
+ * File:   Fondo3.h
+ * Author: soporte
+ *
+ * Created on 14 de junio de 2020, 02:52 PM
+ */
+
 #ifndef FONDO3_H
 #define FONDO3_H
 
@@ -30,7 +43,7 @@ protected:
 private:
     void draw(const Cairo::RefPtr<Cairo::Context>& cr) {
         
-        Glib::RefPtr<Gdk::Pixbuf> fondo = Gdk::Pixbuf::create_from_file("Assets/avioncito4.png");
+        Glib::RefPtr<Gdk::Pixbuf> fondo = Gdk::Pixbuf::create_from_file("Assets/avioncito6.jpeg");
         Gdk::Cairo::set_source_pixbuf(cr, fondo, 0, 0);
         cr->rectangle(0, 0, fondo->get_width(), fondo->get_height());
         cr->fill();
