@@ -69,6 +69,19 @@ public:
                 } else if (event->keyval == GDK_KEY_Left) {
                     this->destino.set_label(this->util->getListaAme()->anterior()->value->toString());
                 }
+            } else if ("Volaris" == aux->GetNombre()) {
+                if (event->keyval == GDK_KEY_Right) {
+                    this->destino.set_label(this->util->getListaVolar()->siguiente()->value->toString());
+                } else if (event->keyval == GDK_KEY_Left) {
+                    this->destino.set_label(this->util->getListaVolar()->anterior()->value->toString());
+                }
+            }
+            if ("Volaton" == aux->GetNombre()) {
+                if (event->keyval == GDK_KEY_Right) {
+                    this->destino.set_label(this->util->getListaVolat()->siguiente()->value->toString());
+                } else if (event->keyval == GDK_KEY_Left) {
+                    this->destino.set_label(this->util->getListaVolat()->anterior()->value->toString());
+                }
             }
         }
 
@@ -123,6 +136,13 @@ private:
             }
             if ("American" == aux->GetNombre()) {
                 aux->SetDestinos(this->util->getListaAme());
+
+            } else if ("Volaris" == aux->GetNombre()) {
+                aux->SetDestinos(this->util->getListaVolar());
+
+            }
+            if ("Volaton" == aux->GetNombre()) {
+                aux->SetDestinos(this->util->getListaVolat());
 
             }
             aux = this->util->getListaA()->siguiente()->value;

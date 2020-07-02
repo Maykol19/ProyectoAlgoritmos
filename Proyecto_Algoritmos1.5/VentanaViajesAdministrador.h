@@ -31,12 +31,9 @@ public:
 
     void init() {
 
-        this->agregaViajes.set_label("Agregar");
         this->vuelos.set_label("Vuelos");
         this->bhistorial.set_label("Historial");
-        this->agregaViajes.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajesAdministrador::onButtonClickedAgregar));
         this->bhistorial.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajesAdministrador::onButtonClickedHistorial));
-        this->fixedPrincipal.put(this->agregaViajes, 20, 10);
         this->fixedPrincipal.put(this->vuelos, 20, 55);
         this->fixedPrincipal.put(this->bhistorial, 20, 100);
 
@@ -54,7 +51,7 @@ public:
         this->gV->signal_hide().connect(sigc::mem_fun(this, &VentanaViajesAdministrador::aboutWinClose));
         this->gV->show();
 
-        this->close();
+        //this->close();
         
     }
 
@@ -63,28 +60,6 @@ public:
         this->historial = 0;
     }//aboutWinClose
 
-    void onButtonClickedAgregar() {
-
-        this->fixedPrincipal.~Fixed();
-
-        this->fixedAgregar.put(this->fondo3, 0, 0);
-        this->bAerolineas.set_label("Ingrese Aerolinea:");
-        this->bDestino.set_label("Ingrese Destino:");
-        this->bHorarios.set_label("Ingrese Horarios:");
-        this->fixedAgregar.put(this->bAerolineas, 20, 15);
-        this->fixedAgregar.put(this->bDestino, 20, 55);
-        this->fixedAgregar.put(this->bHorarios, 20, 105);
-        this->fixedAgregar.put(this->eAerolineas, 165, 10);
-        this->fixedAgregar.put(this->eDestinos, 163, 50);
-        this->fixedAgregar.put(this->eDestinos2, 373, 50);
-        this->fixedAgregar.put(this->eHorarios, 163, 100);
-        this->fixedAgregar.put(this->eHorarios2, 373, 100);
-
-        this->add(this->fixedPrincipal);
-        this->add(this->fixedAgregar);
-        this->show_all_children();
-
-    }//onButtonClickedAgregar
     
     void onButtonClickedHistorial() {
         
@@ -94,7 +69,7 @@ public:
         this->historial->signal_hide().connect(sigc::mem_fun(this, &VentanaViajesAdministrador::aboutWinClose));
         this->historial->show();
 
-        this->close();
+        //this->close();
         
     }
 
