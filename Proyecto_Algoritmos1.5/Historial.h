@@ -5,8 +5,7 @@
 #include "Historial.h"
 #include "Util.h"
 #include "ColaEnlazada.h"
-#include "Avion.h"
-#include "ArbolBinarioBusqueda.h"
+#include "ViajeDataRAF.h"
 
 class Historial : public Gtk::Window {
 public:
@@ -40,12 +39,26 @@ public:
         this->fixed.put(this->infoGen, 210, 80);
         this->infoGen.set_editable(false);
 
-        avionAvi1 = new Avion("El Skipper");
-        avionAvi2 = new Avion("Airbus100");
-        avionLat1 = new Avion("JL608");
-        avionLat2 = new Avion("El Batman DC");
-        avionAmer1 = new Avion("Perla Negra-6");
-        avionAmer2 = new Avion("Airbus A-319");
+        this->lH.set_label("Listado por horas");
+        this->fixed.put(this->lH, 380, 10);
+        this->lH.signal_clicked().connect(sigc::mem_fun(*this, &Historial::onButtonClickedLH));
+        
+        this->contTiquetes.set_label("Tiquetes Comprados:");
+        this->fixed.put(this->contTiquetes, 10, 400);
+        this->contTiquetes.signal_clicked().connect(sigc::mem_fun(*this, &Historial::onButtonClickedCont1));
+
+        this->fixed.put(this->eContTiquete, 200, 400);
+
+        this->infoHor.set_size_request(115, 200);
+        this->fixed.put(this->infoHor, 390, 80);
+        this->infoHor.set_editable(false);
+
+        avionAvi1 = new Avion("El Skipper", 23);
+        avionAvi2 = new Avion("Airbus100", 11);
+        avionLat1 = new Avion("JL608", 29);
+        avionLat2 = new Avion("El Batman DC", 10);
+        avionAmer1 = new Avion("Perla Negra-6", 72);
+        avionAmer2 = new Avion("Airbus A-319", 45);
 
 
         arbolAvianca->insertar(avionAvi1);
@@ -58,24 +71,12 @@ public:
         arbolAmerican->insertar(avionAmer2);
 
 
-        aviones.push_back(avionAvi2->GetNombre());
-        aviones.push_back(avionAmer2->GetNombre());
-
-        aviones.push_back(avionLat2->GetNombre());
-        aviones.push_back(avionAvi1->GetNombre());
-
-        aviones.push_back(avionLat1->GetNombre());
-        aviones.push_back(avionAmer1->GetNombre());
-
-
-
         this->add(this->fixed);
         this->show_all_children();
 
     }
 
     void onButtonClickedL() {
-        cout << "ENTRA CLICKED" << endl;
         string ss = "";
 
         ss += "Latam: \n \n" + this->arbolLatam->salida() + "\n \n" + "Avianca: \n \n" + this->arbolAvianca->salida() + "\n \n" + "American: \n \n" + this->arbolAmerican->salida();
@@ -87,46 +88,46 @@ public:
     }
 
     void onButtonClickedLG() {
-        cout << "ENTRA CLICKED" << endl;
 
-        char *nombres[aviones.size()];
-        char nombre [25];
-        char *letra;
-        int i, j, n = sizeof (nombres) / sizeof (char*);
+        char nombres[][50] = {"Airbus100", "Airbus A-319", "El Batman DC", "El Skipper", "JL608", "Perla Negra-6"};
 
-
-        for (i = 0; i < n; i++)//Ciclo q va pidiendo los nombres
-        {
-            fgets(nombre, sizeof (aviones[i]), stdin); //guarda la  longitud de la palabra en la variable nombre
-            letra = strchr(nombre, '\n'); //localiza o ubica al apuntador letra en los caracteres empezando por el salto de linea
-            if (letra != NULL) {//si temp no es un elemento nulo
-                *letra = '\0';
-                nombres[i] = strdup(nombre);
-            }
-        }
-
-
-        for (i = 0; i < n; i++) {//Ciclo q realiza el proceso de ordenamiento, recorre el apuntador la cadena para ordenar
-            for (j = n - 1; j > 0; j--) {
-                if (strcmp(nombres[j], nombres[j - 1]) < 0) {
-                    letra = nombres[j];
-                    nombres[j] = nombres[j - 1];
-                    nombres[j - 1] = letra;
-
-                }
-
-            }
-        }
-
-
-        for (i = 0; i < n; i++)//ciclo q muestra los nombres ya ordenados q aparecera en pantalla
-        {
-            printf("%d: %s\n", i + 1, nombres[i]);
+        string salida = "";
+        cout << "NOMBRES" << endl;
+        for (int i = 0; i < 6; i++) {
+            salida += (string) nombres[i] + "\n" + "\n";
         }
         Glib::RefPtr<Gtk::TextBuffer>resultado;
         resultado = Gtk::TextBuffer::create();
-        resultado->set_text("ooi");
+        resultado->set_text(salida);
         this->infoGen.set_buffer(resultado);
+    }
+
+    void onButtonClickedLH() {
+
+        string salida = "";
+        
+        ViajeDataRAF* viajes= new ViajeDataRAF();
+        
+        cout<<"CONTADOR"<< viajes->contador()<<endl;
+
+        salida += avionAmer1->toStringH() + "\n" + "\n" + avionAmer2->toStringH() + "\n" + "\n" + avionLat1->toStringH() + "\n" + "\n" +
+                avionAvi1->toStringH() + "\n" + "\n" + avionAvi2->toStringH() + "\n" + "\n" + avionLat2->toStringH() + "\n";
+
+        Glib::RefPtr<Gtk::TextBuffer>resultado;
+        resultado = Gtk::TextBuffer::create();
+        resultado->set_text(salida);
+        this->infoHor.set_buffer(resultado);
+    }
+    
+    void onButtonClickedCont1() {
+        
+        ViajeDataRAF* viaje = new ViajeDataRAF();
+
+        stringstream s;
+        s << viaje->contador();
+
+        this->eContTiquete.set_text(s.str());
+        
     }
 
 private:
@@ -135,9 +136,10 @@ private:
     Gtk::Button lA;
     Gtk::TextView infoGen;
     Gtk::Button lG;
-
-
-    vector<string> aviones;
+    Gtk::Button contTiquetes;
+    Gtk::Entry eContTiquete;
+    Gtk::TextView infoHor;
+    Gtk::Button lH;
 
     Util* utilarbol;
 

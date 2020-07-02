@@ -286,8 +286,8 @@ private:
         } else
             std::cout << "invalid iter" << std::endl;
     }
-
 };
+
 
 #endif /* VENTANAVIAJES_H */
 

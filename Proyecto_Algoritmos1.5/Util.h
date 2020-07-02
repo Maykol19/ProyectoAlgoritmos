@@ -62,12 +62,12 @@ public:
         cola1Ame = new ColaEnlazada<Horarios*>();
         cola2Ame = new ColaEnlazada<Horarios*>();
         
-        avionAvi1 = new Avion("El Skipper");
-        avionAvi2 = new Avion("Airbus100");
-        avionLat1 = new Avion("JL608");
-        avionLat2 = new Avion("El Batman DC");
-        avionAmer1 = new Avion("Perla Negra-6");
-        avionAmer2 = new Avion("Airbus A-319");
+        avionAvi1 = new Avion("El Skipper", 23);
+        avionAvi2 = new Avion("Airbus100",11);
+        avionLat1 = new Avion("JL608",29);
+        avionLat2 = new Avion("El Batman DC",10);
+        avionAmer1 = new Avion("Perla Negra-6",72);
+        avionAmer2 = new Avion("Airbus A-319",45);
         
         arbolAvianca = new ArbolBinarioBusqueda<Avion*>();
         arbolLatam = new ArbolBinarioBusqueda<Avion*>();

@@ -15,7 +15,7 @@ public:
 
     VuelosUsuario() {
         this->set_title("Vuelos");
-        this->set_size_request(500, 500);
+        this->set_size_request(600, 600);
         init();
     }//constructor
 
@@ -25,17 +25,20 @@ public:
         this->fixed.put(this->bAerolineas, 20, 10);
 
         this->bDestinos.set_label("Destinos");
-        this->fixed.put(this->bDestinos, 110, 10);
+        this->fixed.put(this->bDestinos, 140, 10);
 
         this->bHorarios.set_label("Horarios");
-        this->fixed.put(this->bHorarios, 185, 10);
+        this->fixed.put(this->bHorarios, 260, 10);
 
+        this->bAvion.set_label("Avion");
+        this->fixed.put(this->bAvion, 370, 10);
+        
         this->bVuelos.set_label("Actualizar itinerario");
-        this->fixed.put(this->bVuelos, 350, 10);
+        this->fixed.put(this->bVuelos, 377, 500);
         this->bVuelos.signal_clicked().connect(sigc::mem_fun(*this, &VuelosUsuario::onButtonClickedActualizar));
 
-        this->info.set_size_request(350, 250);
-        this->fixed.put(this->info, 20, 100);
+        this->info.set_size_request(500, 400);
+        this->fixed.put(this->info, 20, 80);
         this->info.set_editable(false);
         this->add(this->fixed);
 
@@ -50,7 +53,7 @@ public:
         string ss = "";
 
         for (int i = 0; i < viajeData.cargarViajes()->size(); i++) {
-            ss += viajeData.cargarViajes()->at(i).toString() + "\n"+"\n";
+            ss += viajeData.cargarViajes()->at(i).toString() + "\n" + "\n";
 
             cout << viajeData.cargarViajes()->at(i).toString();
 
@@ -72,6 +75,7 @@ private:
     Gtk::Button bDestinos;
     Gtk::Button bHorarios;
     Gtk::Button bVuelos;
+    Gtk::Button bAvion;
 
 };
 

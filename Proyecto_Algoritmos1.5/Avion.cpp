@@ -1,14 +1,22 @@
 #include "Avion.h"
+#include <ostream>
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
 
 Avion::Avion(string nombre, int x, int y) {
     this->nombre = nombre;
 }//constructor
 
-Avion::Avion(string nombre) {
+Avion::Avion(string nombre, int horas) {
     this->nombre = nombre;
+    this->horas = horas;
 }//constructor
 
 //getters and setters
+
 void Avion::SetNombre(string nombre) {
     this->nombre = nombre;
 }
@@ -33,6 +41,19 @@ int Avion::GetY() const {
     return y;
 }
 
+int Avion::GetHoras() const {
+    return horas;
+}
+
 string Avion::toString() {
     return nombre;
+}//toString
+
+string Avion::toStringH() {
+
+
+    stringstream s;
+    s << nombre << ": " << horas;
+    return s.str();
+
 }//toString
