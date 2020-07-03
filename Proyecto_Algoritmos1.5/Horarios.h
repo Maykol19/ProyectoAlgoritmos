@@ -15,6 +15,7 @@ class Horarios {
     string nombreSalida;
     
 public:
+    //Métodos
     Horarios(string llegada, string salida);
     Horarios();
     void SetSalida(string salida);

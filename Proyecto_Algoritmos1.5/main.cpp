@@ -12,9 +12,8 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-
     Glib::RefPtr<Gtk::Application> app =
-                Gtk::Application::create(argc, argv, "Viajes");
+                Gtk::Application::create(argc, argv, "Proyecto Algoritmos");
         VentanaPrincipal window;
         return app->run(window);
 

@@ -12,7 +12,6 @@
 #include "Fondo2.h"
 #include "ColaEnlazada.h"
 #include "Fondo3.h"
-#include "GrafoVuelosMainWIndows.h"
 #include "GrafoVuelos.h"
 #include "Historial.h"
 
@@ -50,17 +49,14 @@ public:
         this->gV = new GrafoVuelos();
         this->gV->signal_hide().connect(sigc::mem_fun(this, &VentanaViajesAdministrador::aboutWinClose));
         this->gV->show();
-
-        //this->close();
         
-    }
+    }//onButtonClickedVuelos
 
     void aboutWinClose() {
         this->gV = 0;
         this->historial = 0;
     }//aboutWinClose
 
-    
     void onButtonClickedHistorial() {
         
         if (this->historial != 0)
@@ -68,10 +64,8 @@ public:
         this->historial = new Historial();
         this->historial->signal_hide().connect(sigc::mem_fun(this, &VentanaViajesAdministrador::aboutWinClose));
         this->historial->show();
-
-        //this->close();
         
-    }
+    }//onButtonClickedHistorial
 
 private:
     //atributo
@@ -89,7 +83,6 @@ private:
     Gtk::Entry eHorarios;
     Gtk::Entry eDestinos2;
     Gtk::Entry eHorarios2;
-    GrafoVuelosMainWindows* grafoVuelos;
     GrafoVuelos* gV;
     Historial* historial;
     Fondo3 fondo3;

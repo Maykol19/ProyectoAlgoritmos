@@ -59,7 +59,7 @@ private:
         this->ingresarUsuario->signal_hide().connect(sigc::mem_fun(this, &VentanaPrincipal::aboutWinClose));
         this->ingresarUsuario->show();
 
-    }//abrirVentanaViajes
+    }//abrirVentanaUsuario
 
     void abrirVentanaAdministrativo() {
 
@@ -69,7 +69,7 @@ private:
         this->ingresarAdministrativo->signal_hide().connect(sigc::mem_fun(this, &VentanaPrincipal::aboutWinClose));
         this->ingresarAdministrativo->show();
 
-    }//abrirVentanaViajes
+    }//abrirVentanaAdministrativo
 
     void aboutWinClose() {
         this->ingresarUsuario = 0;

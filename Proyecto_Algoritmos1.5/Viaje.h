@@ -19,8 +19,7 @@ public:
         strcpy(this->horaSalida, "NULL");
         strcpy(this->horaLlegada, "NULL");
         strcpy(this->avion, "NULL");
-
-    }
+    }//constructor
 
     Viaje(char* nombreAero, char* destSalida, char* destLlegada, char* horaSalida, char* horaLlegada, char* avion) {
         strcpy(this->nombreAe, nombreAero);
@@ -29,8 +28,9 @@ public:
         strcpy(this->horaSalida, horaSalida);
         strcpy(this->horaLlegada, horaLlegada);
         strcpy(this->avion, avion);
-    }
+    }//constructor
 
+    //getters and setters
     char* GetHoraLlegada() {
         return horaLlegada;
     }
@@ -61,8 +61,7 @@ public:
         s << nombreAe << "                 "<< destSalida << "-" << desLlegada << "              "<< horaSalida << "              " << avion;
         return s.str();
 
-    }
-
+    }//toString
 
 private:
     //VariableS
@@ -72,8 +71,7 @@ private:
     char horaSalida[30];
     char horaLlegada[30];
     char avion[30];
-
-
+    
 };
 
 #endif /* VIAJE_H */

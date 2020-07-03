@@ -18,8 +18,7 @@ public:
     DoublyLinkedCircular() {
         this->first = NULL;
         this->last = NULL;
-        
-    }
+    }//constructor
 
     void insert(Obj value) {
         
@@ -85,6 +84,7 @@ public:
         
     }//size
 
+    //getters and setters
     Obj getFirstValue() {
         return this->first->value;
     }

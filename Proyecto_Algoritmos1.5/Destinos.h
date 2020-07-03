@@ -18,6 +18,7 @@ class Destinos {
     string avion;
     
 public:
+    //Métodos
     Destinos(string nombreAerolinea, string paisSalida, string paisLlegada, string restriccion, string avion);
     void SetHorarios(ColaEnlazada<Horarios*>* horarios);
     ColaEnlazada<Horarios*>* GetHorarios() const;

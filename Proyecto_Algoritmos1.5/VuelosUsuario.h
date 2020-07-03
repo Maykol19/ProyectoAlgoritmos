@@ -5,7 +5,6 @@
 #include "VuelosUsuario.h"
 #include "ViajeDataRAF.h"
 #include "Fondo2.h"
-
 #include <iostream>
 #include <string>
 
@@ -48,26 +47,25 @@ public:
 
     }//init
 
+    //Método que carga los vuelos comprados en el informe de vuelos del momento
     void onButtonClickedActualizar() {
 
         ViajeDataRAF viajeData;
-
         string ss = "";
 
         for (int i = 0; i < viajeData.cargarViajes()->size(); i++) {
             ss += viajeData.cargarViajes()->at(i).toString() + "\n" + "\n";
-
-            cout << viajeData.cargarViajes()->at(i).toString();
-
         }
 
         Glib::RefPtr<Gtk::TextBuffer>resultado;
         resultado = Gtk::TextBuffer::create();
         resultado->set_text(ss);
         this->info.set_buffer(resultado);
-    }
+        
+    }///onButtonClickedActualizar
 
 private:
+    //atributos
     Gtk::Fixed fixed;
     Gtk::TextView info;
     Gtk::Label lAerolineas;

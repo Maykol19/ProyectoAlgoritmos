@@ -34,7 +34,6 @@ DoublyLinkedCircular<Destinos*>* Aerolineas::GetDestinos()  {
     return destinos;
 }
 
-
 string Aerolineas::toString() {
     return nombre + " ";
 }//toString

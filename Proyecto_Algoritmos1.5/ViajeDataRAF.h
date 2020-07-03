@@ -24,6 +24,7 @@ public:
         } // if
     }//constructor
 
+    //Método que crea y guarda en el archivo RAF los vuelos comprados
     void registrarViaje(Viaje &viaje) {
 
         clear();
@@ -32,6 +33,7 @@ public:
 
     }//registrarViaje 
 
+    //Obtiene los vuelos del archivo RAF
     Viaje obtenerViaje(long n) {
 
         Viaje viaje;
@@ -43,6 +45,7 @@ public:
 
     }//obtenerViaje
 
+    //Método que se encarga de mostrar los vuelos en la tabla de vuelos del momento
     vector<Viaje>* cargarViajes() {
 
         int i = 1;
@@ -54,12 +57,11 @@ public:
             viaje = obtenerViaje(i);
             i++;
         }//while
-
         vector<Viaje>* vectorViaje = new vector<Viaje>();
         vectorViaje->push_back(temp->at(0));
         int conta = 0;
 
-        for (int i = 1; i < temp->size(); i++) {
+        for (int i = 1; i < temp->size(); i++) {//Verifica que no muestre vuelos repetidos
             for (int j = 0; j < vectorViaje->size(); j++) {
                 if (temp->at(i).toString() == vectorViaje->at(j).toString()) {
                     conta++;
@@ -74,6 +76,7 @@ public:
 
     }//cargarViajes
 
+    //LLeva la cuenta de cuántos tiquetes se han comprado para el informe
     int contador() {
 
         int i = 1, conta = 0;
@@ -88,8 +91,10 @@ public:
         }//while
 
         return conta;
-    }
+        
+    }//contador
 
+    //Método que se encarga de mostrar los vuelos apartir de la hora de salida
     vector<Viaje>* cargarGrafo() {
 
         int i = 1, cont = 0;
@@ -107,8 +112,7 @@ public:
             token = strtok(aux->at(i).GetHoraSalida(), ":");
             salida = (string) token;
             cont = stoi(salida);
-
-            if (cont <= tm_local->tm_hour) {
+            if (cont <= tm_local->tm_hour) {//Compara para saber cuales ya puede mostrar(salir) y cuales no
                 grafo->push_back(viajeAux);
             }
         }
@@ -116,6 +120,7 @@ public:
 
     }//cargarGrafo
 
+    //Obtiene índice del archivo RAF
     int obtenerIndice(char* nombre) {
 
         vector<Viaje>* viajeBuscar = cargarViajes();
@@ -129,6 +134,7 @@ public:
 
     }//obtenerIndice
 
+    //Busca los viajes del archivo
     Viaje buscarViaje(char* nombreA) {
 
         vector<Viaje>* viajeBuscar = cargarViajes();
@@ -144,10 +150,6 @@ public:
     }//buscarViaje
 
 };
-
-
-
-
 
 #endif /* VIAJEDATARAF_H */
 

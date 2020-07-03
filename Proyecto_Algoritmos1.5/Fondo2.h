@@ -28,6 +28,7 @@ protected:
     }//on_draw
 
 private:
+    //Método para colocar fondo
     void draw(const Cairo::RefPtr<Cairo::Context>& cr) {
         
         Glib::RefPtr<Gdk::Pixbuf> fondo = Gdk::Pixbuf::create_from_file("Assets/avioncito3.jpg");
