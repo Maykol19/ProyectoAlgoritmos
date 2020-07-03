@@ -13,13 +13,11 @@ public:
     Historial() {
         this->set_title("Historial");
         this->set_size_request(600, 630);
-
         arbolAvianca = new ArbolBinarioBusqueda<Avion*>();
         arbolLatam = new ArbolBinarioBusqueda<Avion*>();
         arbolAmerican = new ArbolBinarioBusqueda<Avion*>();
         arbolVolar = new ArbolBinarioBusqueda<Avion*>();
         arbolVolat = new ArbolBinarioBusqueda<Avion*>();
-
         init();
     }//constructor
 
@@ -41,14 +39,6 @@ public:
         this->fixed.put(this->infoGen, 330, 60);
         this->infoGen.set_editable(false);
 
-//        this->lH.set_label("Listado por horas");
-//        this->fixed.put(this->lH, 380, 10);
-//        this->lH.signal_clicked().connect(sigc::mem_fun(*this, &Historial::onButtonClickedLH));
-//
-//        this->infoHor.set_size_request(115, 200);
-//        this->fixed.put(this->infoHor, 390, 60);
-//        this->infoHor.set_editable(false);
-
         this->contTiquetes.set_label("Tiquetes Comprados:");
         this->fixed.put(this->contTiquetes, 10, 550);
         this->contTiquetes.signal_clicked().connect(sigc::mem_fun(*this, &Historial::onButtonClickedCont1));
@@ -67,7 +57,6 @@ public:
         avionVolat1 = new Avion("Coronavairus", 32);
         avionVolat2 = new Avion("El Bicho", 56);
 
-
         arbolAvianca->insertar(avionAvi1);
         arbolAvianca->insertar(avionAvi2);
 
@@ -83,15 +72,14 @@ public:
         arbolVolat->insertar(avionVolat1);
         arbolVolat->insertar(avionVolat2);
 
-
         this->add(this->fixed);
         this->show_all_children();
 
-    }
+    }//init
 
     void onButtonClickedL() {
+        
         string ss = "";
-
         ss += "Latam: \n \n" + this->arbolLatam->salida() + "\n \n" + "Avianca: \n \n" + this->arbolAvianca->salida()
                 + "\n \n" + "American: \n \n" + this->arbolAmerican->salida() + "\n \n" + "Volaris: \n \n" + this->arbolVolar->salida() + "\n \n" + "Volaton: \n \n" + this->arbolVolat->salida();
 
@@ -99,31 +87,29 @@ public:
         resultado = Gtk::TextBuffer::create();
         resultado->set_text(ss);
         this->info.set_buffer(resultado);
-    }
+        
+    }//onButtonClickedL
 
     void onButtonClickedLG() {
 
         char nombres[][50] = {"Airbus100", "Airbus A-319", "Avioncito 2.0", "Bamba Negra", "Coronavairus", "El Batman DC", "El Bicho", "El Skipper", "JL608", "Perla Negra-6"};
-
         string salida = "";
-        cout << "NOMBRES" << endl;
+
         for (int i = 0; i < 10; i++) {
             salida += (string) nombres[i] + "\n" + "\n";
         }
+        
         Glib::RefPtr<Gtk::TextBuffer>resultado;
         resultado = Gtk::TextBuffer::create();
         resultado->set_text(salida);
         this->infoGen.set_buffer(resultado);
 
-    }
+    }//onButtonClickedLG
 
     void onButtonClickedLH() {
 
         string salida = "";
-
         ViajeDataRAF* viajes = new ViajeDataRAF();
-
-        cout << "CONTADOR" << viajes->contador() << endl;
 
         salida += avionAmer1->toStringH() + "\n" + "\n" + avionVolar2->toStringH() + "\n" + "\n" + avionVolat2->toStringH() + "\n" + "\n" +
                 avionAmer2->toStringH() + "\n" + "\n" + avionVolar1->toStringH() + "\n" + "\n" + avionVolat1->toStringH() + "\n" + "\n" +
@@ -133,21 +119,22 @@ public:
         resultado = Gtk::TextBuffer::create();
         resultado->set_text(salida);
         this->infoHor.set_buffer(resultado);
-    }
+        
+    }//onButtonClickedLH
 
     void onButtonClickedCont1() {
 
         ViajeDataRAF* viaje = new ViajeDataRAF();
-
 
         stringstream s;
         s << viaje->contador();
 
         this->eContTiquete.set_text(s.str());
 
-    }
+    }//onButtonClickedCont1
 
 private:
+    //Atributos
     Gtk::Fixed fixed;
     Gtk::TextView info;
     Gtk::Button lA;
@@ -155,10 +142,8 @@ private:
     Gtk::Button lG;
     Gtk::TextView infoHor;
     Gtk::Button lH;
-
     Gtk::Entry eContTiquete;
     Gtk::Button contTiquetes;
-
     Util* utilarbol;
 
     ArbolBinarioBusqueda<Avion*>* arbolAvianca;
@@ -167,15 +152,12 @@ private:
     ArbolBinarioBusqueda<Avion*>* arbolVolar;
     ArbolBinarioBusqueda<Avion*>* arbolVolat;
 
-
-
     Avion* avionAvi1;
     Avion* avionAvi2;
     Avion* avionLat1;
     Avion* avionLat2;
     Avion* avionAmer1;
     Avion* avionAmer2;
-
     Avion* avionVolar1;
     Avion* avionVolar2;
     Avion* avionVolat1;

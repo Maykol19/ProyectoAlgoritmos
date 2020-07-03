@@ -16,7 +16,6 @@ Avion::Avion(string nombre, int horas) {
 }//constructor
 
 //getters and setters
-
 void Avion::SetNombre(string nombre) {
     this->nombre = nombre;
 }
@@ -50,7 +49,6 @@ string Avion::toString() {
 }//toString
 
 string Avion::toStringH() {
-
 
     stringstream s;
     s << nombre << ": " << horas;

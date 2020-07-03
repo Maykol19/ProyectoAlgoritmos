@@ -1,7 +1,6 @@
 #ifndef ADMINISTRATIVO_H
 #define ADMINISTRATIVO_H
 
-
 #include <iostream>
 #include <fstream>
 #include <iostream>
@@ -11,25 +10,21 @@
 #include <string>
 #include <regex>
 
-
 using namespace std;
 
 class Administrativo {
 public:
 
     Administrativo() {
-
-    }
-    //Constructor sobrecargado
+    }//Constructor
 
     Administrativo(string nombre, string numeroID, string contrasena) {
         this->nombre = nombre;
         this->numeroID = numeroID;
         this->contrasena = contrasena;
+    }//Constructor
 
-    }
-    //Constructor sobrecargado
-
+    //getters and setters
     void setNombre(string nombre) {
         this->nombre = nombre;
     }
@@ -54,17 +49,13 @@ public:
         return numeroID;
     }
 
-
-
 private:
     //Variables
     string nombre;
     string numeroID;
     string contrasena;
+    
 };
-
-
-
 
 #endif /* ADMINISTRATIVO_H */
 

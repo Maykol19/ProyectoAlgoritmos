@@ -18,12 +18,10 @@
         <itemPath>Viaje.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="GUI" projectFiles="true">
-        <itemPath>Drawing.h</itemPath>
         <itemPath>Fondo.h</itemPath>
         <itemPath>Fondo2.h</itemPath>
         <itemPath>Fondo3.h</itemPath>
         <itemPath>GrafoVuelos.h</itemPath>
-        <itemPath>GrafoVuelosMainWIndows.h</itemPath>
         <itemPath>Historial.h</itemPath>
         <itemPath>IngresarAdministrativo.h</itemPath>
         <itemPath>IngresarUsuario.h</itemPath>
@@ -31,8 +29,6 @@
         <itemPath>VentanaViajes.h</itemPath>
         <itemPath>VentanaViajesAdministrador.h</itemPath>
         <itemPath>VuelosUsuario.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f2" displayName="Presentacion" projectFiles="true">
       </logicalFolder>
       <logicalFolder name="f2" displayName="Util" projectFiles="true">
         <logicalFolder name="f1" displayName="ArbolBusquedaBinaria" projectFiles="true">
@@ -66,8 +62,6 @@
         <itemPath>Avion.cpp</itemPath>
         <itemPath>Destinos.cpp</itemPath>
         <itemPath>Horarios.cpp</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f2" displayName="Presentacion" projectFiles="true">
       </logicalFolder>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -123,8 +117,6 @@
       </item>
       <item path="DoublyLinkedCircular.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Drawing.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Fondo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Fondo2.h" ex="false" tool="3" flavor2="0">
@@ -134,8 +126,6 @@
       <item path="Grafo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GrafoVuelos.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Historial.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -216,8 +206,6 @@
       </item>
       <item path="DoublyLinkedCircular.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Drawing.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Fondo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Fondo2.h" ex="false" tool="3" flavor2="0">
@@ -227,8 +215,6 @@
       <item path="Grafo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GrafoVuelos.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="GrafoVuelosMainWIndows.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Historial.h" ex="false" tool="3" flavor2="0">
       </item>

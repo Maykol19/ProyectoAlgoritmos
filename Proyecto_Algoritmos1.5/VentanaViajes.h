@@ -22,10 +22,12 @@ public:
     class ModelColumns : public Gtk::TreeModel::ColumnRecord {
     public:
 
+        //Creación del combo box
         ModelColumns() {
             add(m_col_horarios);
         }
         Gtk::TreeModelColumn<Glib::ustring> m_col_horarios;
+        
     };
 
     VentanaViajes(Usuario* usuario) {
@@ -41,6 +43,7 @@ public:
         this->show_all_children();
     }//constructor
 
+    //Método que controla los movimientos con las flechas
     bool on_key_press_event(GdkEventKey* event) {
 
         if (event->keyval == GDK_KEY_Up) {
@@ -147,22 +150,16 @@ private:
             }
             aux = this->util->getListaA()->siguiente()->value;
         }
-
-
-
+        
     }//init
 
     void onButtonClickedSeleccionarAero() {
 
-        for (int i = 0; i < this->util->getListaA()->size(); i++) {
+        for (int i = 0; i < this->util->getListaA()->size(); i++) {//Guarda la aerolinea seleccionada
             if (aerolinea.get_label() == this->util->getListaA()->siguiente()->value->toString()) {
                 aux = this->util->getListaA()->siguiente()->prev->value;
-                //guardamos la aerolinea seleccionada
             }
         }
-
-
-        //this->fixedAerlonias.~Fixed();
 
         this->fixedAerlonias.put(this->fondo2, 0, 0);
         this->seleccionarDestinos.set_label("Seleccionar Destinos");
@@ -172,12 +169,9 @@ private:
         this->fixedAerlonias.put(this->destino, 250, 103);
 
         this->add(this->fixedAerlonias);
-        //this->add(this->fixedAerlonias);
         this->show_all_children();
 
-    }//onButtonClickedCambiar
-
-    //int conta=0;
+    }//onButtonClickedSeleccionarAero
 
     void OnButtonClickedSeleccionarDes() {
 
@@ -188,19 +182,12 @@ private:
             }
         }
 
-        //this->fixedDestinos.~Fixed();
-
         this->fixedAerlonias.put(this->fondo2, 0, 0);
         this->seleccionarHorarios.set_label("Seleccionar Horarios");
-        //this->horario.set_label("Elegir Hora");
         this->seleccionarHorarios.signal_clicked().connect(sigc::mem_fun(*this, &VentanaViajes::OnButtonClickedSeleccionarHor));
         this->fixedAerlonias.put(this->seleccionarHorarios, 30, 160);
-        //this->fixedAerlonias.put(this->horario, 250, 163);
-
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         m_Combo.set_model(m_refTreeModel);
-
-        //Fill the ComboBox's Tree Model:
 
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
 
@@ -212,7 +199,7 @@ private:
             } else {
 
                 row = *(m_refTreeModel->append());
-                row[m_Columns.m_col_horarios] = auxDest->GetHorarios()->getNodo(j)->toString();
+                row[m_Columns.m_col_horarios] = auxDest->GetHorarios()->getNodo(j)->toString();//Pega los horarios en el combo box
             }
         }
 
@@ -235,13 +222,13 @@ private:
         this->add(this->fixedAerlonias);
         this->show_all_children();
 
-    }
+    }//OnButtonClickedSeleccionarHor
 
+    //Método que guarda los vuelos comprados en el archivo RAF
     void OnButtonClickedComprarTiquete() {
 
         if (aux != NULL && auxDest != NULL && auxHora != NULL) {
             if (auxDest->GetRestriccion() != usuarioAux->getNacionalidad()) {
-
                 char nombreA[30];
                 char destinoSalida[30];
                 char destinoLlegada[30];
@@ -274,8 +261,8 @@ private:
                         false,
                         Gtk::MESSAGE_INFO
                         );
-                dialogo.set_secondary_text("Restricción por nacionalidad");
-                dialogo.run();
+                dialogo.set_secondary_text("Restricción por nacionalidad");//Mensaje que indica que por su nacionalidad no puede
+                dialogo.run();                                            //viajar a cierto destino
             }
         } else {
             Gtk::MessageDialog dialogo(
@@ -286,10 +273,9 @@ private:
                     );
             dialogo.set_secondary_text("Error, no puede viajar");
             dialogo.run();
-
         }
 
-    }
+    }//OnButtonClickedComprarTiquete
 
     void on_combo_changed() {
         Gtk::TreeModel::iterator iter = m_Combo.get_active();
@@ -305,9 +291,10 @@ private:
             }
         } else
             std::cout << "invalid iter" << std::endl;
-    }
+        
+    }//on_combo_changed
+    
 };
-
 
 #endif /* VENTANAVIAJES_H */
 

@@ -46,23 +46,21 @@ public:
     void onButtonClickedActualizar() {
 
         ViajeDataRAF viajeData;
-
         string ss = "";
 
-        for (int i = 0; i < viajeData.cargarGrafo()->size(); i++) {
+        for (int i = 0; i < viajeData.cargarGrafo()->size(); i++) {//Llama al método cargarGrafo para que imprima los vuelos según la hora
             ss += viajeData.cargarGrafo()->at(i).toString() + "\n" + "\n";
-
-            cout << viajeData.cargarGrafo()->at(i).toString();
-
         }
 
         Glib::RefPtr<Gtk::TextBuffer>resultado;
         resultado = Gtk::TextBuffer::create();
         resultado->set_text(ss);
         this->info.set_buffer(resultado);
-    }
+        
+    }//onButtonClickedActualizar
 
 private:
+    //Variables
     Gtk::Fixed fixed;
     Gtk::TextView info;
     Gtk::Label lAerolineas;

@@ -16,7 +16,7 @@ public:
         this->set_size_request(400, 300);
         administrativoData = new AdministrativoData();
         init();
-    }//constructor default
+    }//constructor
 
     void updateWindow() {
         queue_draw();
@@ -36,7 +36,6 @@ protected:
     Gtk::Button btnSalir;
     AdministrativoData* administrativoData;
     VentanaViajesAdministrador* ventanaViajesAdministrativos;
-
 
 private:
 
@@ -64,21 +63,20 @@ private:
         this->btnSalir.set_label("Salir");
         this->fixed.put(this->btnSalir, 230, 220);
 
-
         this->btnGuardar.signal_clicked().connect(sigc::mem_fun(*this, &IngresarAdministrativo::onButtonClickedGuardar));
         this->btnIngresar.signal_clicked().connect(sigc::mem_fun(*this, &IngresarAdministrativo::onButtonClickedIngresar));
         this->btnSalir.signal_clicked().connect(sigc::mem_fun(*this, &IngresarAdministrativo::onButtonClickedSalir));
 
-        
         ventanaViajesAdministrativos=0;
 
         this->add(fixed);
         this->show_all_children();
 
-    }
-    //metodo de registro
-
+    }//init
+    
+    //Método que guarda los administradores en el archivo
     void onButtonClickedGuardar() {
+        
         if (!etNombre.get_text().empty()&&!etIDAdministrativo.get_text().empty()&&!etContrasenna.get_text().empty()) {
             Administrativo* administrativo = new Administrativo(etNombre.get_text(), etIDAdministrativo.get_text(), etContrasenna.get_text());
             administrativoData->write(administrativo);
@@ -93,14 +91,14 @@ private:
             dialogo.run();
         }
 
+    }//onButtonClickedGuardar
 
-    }//abrirVentanaViajes
-
+    //Método que permite el acceso a la sección de administradores
     void onButtonClickedIngresar() {
+        
         administrativoData->read();
 
         if (this->administrativoData->checkPassword(this->etNombre.get_text(), this->etContrasenna.get_text())) {
-
             Gtk::MessageDialog dialogo(
                     *this,
                     "Successfully",
@@ -109,16 +107,13 @@ private:
                     );
             dialogo.set_secondary_text("Bienvenido");
             dialogo.run();
-            
             if (this->ventanaViajesAdministrativos != 0)
                 return;
             this->ventanaViajesAdministrativos = new VentanaViajesAdministrador();
             this->ventanaViajesAdministrativos->signal_hide().connect(sigc::mem_fun(this, &IngresarAdministrativo::aboutWinClose));
             this->ventanaViajesAdministrativos->show();
-
             this->close();
         } else {
-
             Gtk::MessageDialog dialogo(
                     *this,
                     "Error",
@@ -129,23 +124,19 @@ private:
             dialogo.run();
             this->etContrasenna.set_text("");
             this->etNombre.set_text("");
-        }//if
+        }
 
-    }//abrirVentanaViajes
+    }//onButtonClickedIngresar
 
     void onButtonClickedSalir() {
         this->close();
-    }
+    }//onButtonClickedSalir
 
     void aboutWinClose() {
         this->ventanaViajesAdministrativos=0;
     }//aboutWinClose
 
-
-
 };
-
-
 
 #endif /* INGRESARADMINISTRATIVO_H */
 

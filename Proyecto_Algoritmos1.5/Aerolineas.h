@@ -15,6 +15,7 @@ class Aerolineas {
     DoublyLinkedCircular<Destinos*>* destinos;
     
 public:
+    //Métodos
     Aerolineas(string nombre);
     Aerolineas();
     void SetNombre(string nombre);

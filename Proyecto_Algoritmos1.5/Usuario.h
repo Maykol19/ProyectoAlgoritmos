@@ -10,16 +10,13 @@
 #include <string>
 #include <regex>
 
-
 using namespace std;
 
 class Usuario {
 public:
 
     Usuario() {
-
-    }
-    //Constructor sobrecargado
+    }//Constructor
 
     Usuario(string nombre, string genero, string edad, string numPasaporte, string nacionalidad) {
         this->nombre = nombre;
@@ -27,10 +24,9 @@ public:
         this->genero = genero;
         this->numPasaporte = numPasaporte;
         this->nacionalidad = nacionalidad;
+    }//Constructor
 
-    }
-    //Constructor sobrecargado
-
+    //getters and setters
     void setNacionalidad(string nacionalidad) {
         this->nacionalidad = nacionalidad;
     }
@@ -79,10 +75,8 @@ private:
     string edad;
     string numPasaporte;
     string nacionalidad;
+    
 };
-
-
-
 
 #endif /* USUARIO_H */
 

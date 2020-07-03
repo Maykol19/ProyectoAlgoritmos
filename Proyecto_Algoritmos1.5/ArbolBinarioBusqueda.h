@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   ArbolBinarioBusqueda.h
- * Author: curso
- *
- * Created on June 18, 2019, 1:10 PM
- */
-
 #ifndef ARBOLBINARIOBUSQUEDA_H
 #define ARBOLBINARIOBUSQUEDA_H
 
@@ -18,10 +5,9 @@
 #include <iostream>
 #include <string.h>
 #include <string>
-
-
 #include "NodoBinario.h"
 #include "Avion.h"
+
 using namespace std;
 
 template <typename Object>
@@ -31,7 +17,7 @@ public:
 
     ArbolBinarioBusqueda() {
         this->raiz = NULL;
-    }//constructor default
+    }//constructor
 
     bool isEmpty() {
         return this->raiz == NULL;
@@ -48,7 +34,6 @@ public:
         this->raiz = insertar(this->raiz, elemento);
         cout << elemento->toString() << endl;
         return elemento;
-
     }//insertar
 
     string salida() {
@@ -56,18 +41,16 @@ public:
         string salida = "";
         salida = preOrden2(raiz);
         return salida;
-    }
+    }//salida
 
     void toString() {
         if (isEmpty()) {
             cout << "El arbol esta vacio" << endl;
         }
-
-        //        cout << "Recorrido por un arbol binario de busqueda" << endl;
+        
         cout << "Historial: ";
         preOrden(raiz);
         cout << "" << endl;
-
 
         cout << "InOrden: ";
         inOrden(raiz);
@@ -75,7 +58,7 @@ public:
         cout << "" << endl;
         cout << "PostOrden: ";
         postOrden(raiz);
-    }
+    }//toString
 
 
 private:
@@ -103,7 +86,7 @@ private:
             }
         }//instacia de enteros
         return 0; //si elemento1 y elementos 2 son iguales
-    }//compare
+    }//comparar
 
     NodoBinario<Avion*>* insertar(NodoBinario<Avion*>* nodo, Avion* elemento) {
         if (nodo == NULL) {
@@ -112,7 +95,7 @@ private:
             nodo->izq = insertar(nodo->izq, elemento);
         }
         return nodo; //arbol modificado
-    }//NodoBinario insertar
+    }//insertar
 
     string preOrden2(NodoBinario<Avion*>* nodo) {
         cout << "ENTRA PREORDEN" << endl;
@@ -125,7 +108,7 @@ private:
         }//if
 
         return result;
-    }
+    }//preOrdenstring
 
     void preOrden(NodoBinario<Avion*>* nodo) {
 
@@ -136,7 +119,7 @@ private:
             preOrden(nodo->der);
         }
 
-    }// preOrden
+    }//preOrden
 
     void inOrden(NodoBinario<Avion*>* nodo) {
         if (nodo != NULL) {
@@ -144,7 +127,7 @@ private:
             cout << nodo->elemento->toString() << ", ";
             inOrden(nodo->der);
         }
-    }// preOrden
+    }//inOrden
 
     void postOrden(NodoBinario<Avion*>* nodo) {
         if (nodo != NULL) {
@@ -152,12 +135,12 @@ private:
             postOrden(nodo->der);
             cout << nodo->elemento->toString() << ", ";
         }
-    }// preOrden
+    }//postOrden
 
     int compara(Avion* element1, Avion* element2) {
 
         return -1; //si elemento1 y elementos 2 son iguales
-    }//compare
+    }//compara
 
 };
 

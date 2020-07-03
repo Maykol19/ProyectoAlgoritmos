@@ -14,17 +14,17 @@ public:
             instance = new IngresarUsuario();
         }
         return instance;
-    }
+    }//getInstance
 
     IngresarUsuario() {
         this->set_title("Registrar Usuario");
         this->set_size_request(400, 480);
         init();
-    }//constructor default
+    }//constructor
 
     void updateWindow() {
         queue_draw();
-    }
+    }//updateWindow
 
     Usuario* getUsuarioAux() const {
         return usuarioAux;
@@ -50,9 +50,6 @@ protected:
     Fondo drawingGame;
     Usuario* usuarioAux;
     VuelosUsuario* vuelosUsuario;
-
-
-    //string nombre, string genero, int edad, string numPasaporte, string nacionalidad
 
 private:
 
@@ -97,19 +94,19 @@ private:
         this->add(fixed);
         this->show_all_children();
 
-    }
-    //metodo de registro
-
+    }//init
+    
     void onButtonClicked() {
+        
         usuarioAux = new Usuario(etNombre.get_text(), etGenero.get_text(), etEdad.get_text(), etNumPas.get_text(), etNacio.get_text());
         if (this->ventanaViajes != 0)
             return;
         this->ventanaViajes = new VentanaViajes(usuarioAux);
         this->ventanaViajes->signal_hide().connect(sigc::mem_fun(this, &IngresarUsuario::aboutWinClose));
         this->ventanaViajes->show();
-
         this->close();
-    }//abrirVentanaViajes
+        
+    }//onButtonClicked
 
     void aboutWinClose() {
         this->ventanaViajes = 0;
@@ -118,7 +115,7 @@ private:
 
     void onButtonClicked2() {
         this->close();
-    }
+    }//onButtonClicked2
     
     void onButtonClicked3() {
         if (this->vuelosUsuario != 0)
@@ -126,7 +123,7 @@ private:
         this->vuelosUsuario = new VuelosUsuario();
         this->vuelosUsuario->signal_hide().connect(sigc::mem_fun(this, &IngresarUsuario::aboutWinClose));
         this->vuelosUsuario->show();
-    }
+    }//onButtonClicked3
 
     VentanaViajes* ventanaViajes;
     static IngresarUsuario* instance; // atributo
@@ -134,5 +131,6 @@ private:
 };
 
 IngresarUsuario* IngresarUsuario::instance = 0;
+
 #endif /* INGRESARUSUARIO_H */
 

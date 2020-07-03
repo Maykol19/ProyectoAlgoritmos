@@ -15,6 +15,7 @@ class Avion {
     int horas;
 
 public:
+    //Métodos
     Avion(string nombre, int x, int y);
     Avion(string nombre, int horas);
     void SetNombre(string nombre);

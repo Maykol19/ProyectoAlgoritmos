@@ -6,12 +6,8 @@
 #include "Aerolineas.h"
 
 class Util {
+    
 public:
-
-    //Cosas por hacer:
-    //Grafos con avión ?
-    //Historial de vuelos con árboles
-    //Administrador: Ingresar datos nuevos(Aerolineas, Destinos y Horarios)
 
     Util() {
         aerolinea1 = new Aerolineas("Avianca");
@@ -19,7 +15,6 @@ public:
         aerolinea3 = new Aerolineas("American");
         aerolinea4 = new Aerolineas("Latam");
         aerolinea5 = new Aerolineas("Volaton");
-
 
         listaA = new DoublyLinkedCircular<Aerolineas*>();
 
@@ -34,7 +29,6 @@ public:
         destino8 = new Destinos("Volaris", "Rusia", "Holanda", "Camerun", "Bamba Negra");
         destino9 = new Destinos("Volaton", "Dubai", "Afganistan", "USA", "Coronavairus");
         destino0 = new Destinos("Volaton", "Argetina", "Colombia", "Mexico", "El Bicho");
-
 
         listaAvi = new DoublyLinkedCircular<Destinos*>();
         listaLat = new DoublyLinkedCircular<Destinos*>();
@@ -91,11 +85,9 @@ public:
         cola1Volat = new ColaEnlazada<Horarios*>();
         cola2Volat = new ColaEnlazada<Horarios*>();
 
-
-    }
+    }//init
 
     void llenar() {
-
 
         listaA->insert(aerolinea1);
         listaA->insert(aerolinea2);
@@ -115,7 +107,6 @@ public:
         listaVolat->insert(destino9);
         listaVolat->insert(destino0);
 
-
         cola1Avi->enQueue(CR_AR1);
         cola1Avi->enQueue(CR_AR2);
         cola2Avi->enQueue(CR_Ch1);
@@ -129,7 +120,6 @@ public:
         cola2Ame->enQueue(CR_USA1);
         cola2Ame->enQueue(CR_USA2);
 
-
         cola1Volar->enQueue(ESP_ALE1);
         cola1Volar->enQueue(ESP_ALE2);
         cola2Volar->enQueue(RUS_HOL1);
@@ -139,7 +129,6 @@ public:
         cola1Volat->enQueue(DUB_AFG2);
         cola2Volat->enQueue(ARG_COL1);
         cola2Volat->enQueue(ARG_COL2);
-
 
         destino1->SetHorarios(cola1Avi);
         destino2->SetHorarios(cola2Avi);
@@ -153,10 +142,9 @@ public:
         destino9->SetHorarios(cola1Volat);
         destino0->SetHorarios(cola2Volat);
 
+    }//llenar
 
-
-    }
-
+    //getters and setters
     ColaEnlazada<Horarios*>* getCola2Ame() const {
         return cola2Ame;
     }
@@ -197,7 +185,6 @@ public:
         return listaA;
     }
 
-
     ColaEnlazada<Horarios*>* getCola2Volat() const {
         return cola2Volat;
     }
@@ -221,10 +208,7 @@ public:
     DoublyLinkedCircular<Destinos*>* getListaVolar() const {
         return listaVolar;
     }
-    
-    
-    
-
+  
 private:
 
     Aerolineas* aerolinea1;
@@ -296,8 +280,6 @@ private:
     ColaEnlazada<Horarios*>* cola2Volat;
 
 };
-
-
 
 #endif /* UTIL_H */
 
